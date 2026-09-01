@@ -7,9 +7,7 @@
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "predev": "node scripts/ensure-index.mjs",
-    "prebuild": "node scripts/ensure-index.mjs"
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -44,8 +42,8 @@
     "@replit/vite-plugin-dev-banner": "^0.1.1",
     "@replit/vite-plugin-runtime-error-modal": "^0.0.6",
     "@tailwindcss/typography": "^0.5.15",
-    "@tailwindcss/vite": "catalog:",
-    "@tanstack/react-query": "catalog:",
+    "@tailwindcss/vite": "^4.1.14",
+    "@tanstack/react-query": "^5.90.21",
     "@types/node": "^25.3.3",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
