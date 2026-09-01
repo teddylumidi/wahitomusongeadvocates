@@ -24,7 +24,7 @@ export function Contact() {
     ].join('\n');
 
     window.location.href =
-      `mailto:nerimamusonge@gmail.com,wahitokariukiadvocate@gmail.com` +
+      `mailto:wahitomusongeadvocates@gmail.com` +
       `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setFormStatus('success');
   };
@@ -70,12 +70,12 @@ export function Contact() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-serif mb-2">Email Draft Opened</h3>
+                 <h3 className="text-2xl font-serif mb-2">Email Draft Prepared</h3>
                 <p className="text-primary/70">
-                  Your request is addressed to both Nerima Musonge and Mary Wahito Njogu. Your email app should now be open with the message ready to send.
+                   Your request is addressed to wahitomusongeadvocates@gmail.com. Your email app should now be open with the message ready to send.
                 </p>
                 <a
-                  href="mailto:nerimamusonge@gmail.com,wahitokariukiadvocate@gmail.com"
+                   href="mailto:wahitomusongeadvocates@gmail.com"
                   className="mt-8 text-sm font-semibold tracking-widest text-secondary hover:text-primary transition-colors"
                 >
                   OPEN EMAIL DRAFT AGAIN
