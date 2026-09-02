@@ -16,7 +16,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'HOME', href: `${import.meta.env.BASE_URL}#home` },
     { name: 'ABOUT', href: `${import.meta.env.BASE_URL}about-me` },
-    { name: 'SERVICES', href: `${import.meta.env.BASE_URL}services` },
+    { name: 'PRACTICE AREAS', href: `${import.meta.env.BASE_URL}practice-areas` },
     { name: 'INSIGHTS', href: `${import.meta.env.BASE_URL}insights` },
     { name: 'CONTACT', href: `${import.meta.env.BASE_URL}contact` },
   ];
