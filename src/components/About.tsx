@@ -66,7 +66,7 @@ export function About() {
             <p className="text-primary/70 leading-relaxed text-sm">
               Nerima Musonge is the Managing Partner of Wahito Musonge & Company Advocates LLP, an Advocate of the High Court of Kenya, and Commissioner for Oaths.
             </p>
-            <a href="#contact" className="inline-block mt-5 text-xs font-semibold tracking-widest text-secondary hover:text-primary transition-colors">SEE MORE</a>
+            <a href={`${import.meta.env.BASE_URL}managing-partner`} className="inline-block mt-5 text-xs font-semibold tracking-widest text-secondary hover:text-primary transition-colors">SEE MORE</a>
           </div>
 
           {/* Partner 2 */}
@@ -83,7 +83,7 @@ export function About() {
             <p className="text-primary/70 leading-relaxed text-sm">
               Mary Wahito Njogu is the Founding Partner of Wahito Musonge & Company Advocates LLP, an Advocate of the High Court of Kenya, Commissioner for Oaths, and Notary Public.
             </p>
-            <a href="#contact" className="inline-block mt-5 text-xs font-semibold tracking-widest text-secondary hover:text-primary transition-colors">SEE MORE</a>
+            <a href={`${import.meta.env.BASE_URL}mary-njogu-wahito`} className="inline-block mt-5 text-xs font-semibold tracking-widest text-secondary hover:text-primary transition-colors">SEE MORE</a>
           </div>
         </div>
       </div>
