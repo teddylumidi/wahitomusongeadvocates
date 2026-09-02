@@ -1,32 +1,59 @@
 import { useState } from 'react';
 
-export function Contact() {
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+const FORM_ENDPOINT = 'https://formspree.io/f/xaeyobye';
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export function Contact() {
+  const [formStatus, setFormStatus] = useState<
+    'idle' | 'submitting' | 'success' | 'error'
+  >('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const firstName = String(formData.get('firstName') ?? '');
     const lastName = String(formData.get('lastName') ?? '');
     const email = String(formData.get('email') ?? '');
     const inquiry = String(formData.get('inquiry') ?? '');
     const message = String(formData.get('message') ?? '');
-    const subject = `Website enquiry: ${inquiry}`;
-    const body = [
-      `Name: ${firstName} ${lastName}`,
-      `Email: ${email}`,
-      `Nature of inquiry: ${inquiry}`,
-      '',
-      'Message:',
-      message,
-    ].join('\n');
 
-    window.location.href =
-      `mailto:wahitomusongeadvocates@gmail.com` +
-      `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setFormStatus('success');
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          inquiry,
+          message,
+          _subject: `Website enquiry: ${inquiry}`,
+          _replyto: email,
+          _gotcha: String(formData.get('_gotcha') ?? ''),
+        }),
+      });
+
+      const result: unknown = await response.json().catch(() => null);
+      if (
+        !response.ok ||
+        (typeof result === 'object' &&
+          result !== null &&
+          'success' in result &&
+          result.success === false)
+      ) {
+        throw new Error(`Form submission failed with status ${response.status}`);
+      }
+
+      setFormStatus('success');
+      form.reset();
+    } catch {
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -70,16 +97,12 @@ export function Contact() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                 <h3 className="text-2xl font-serif mb-2">Email Draft Prepared</h3>
+                 <h3 className="text-2xl font-serif mb-2">Enquiry Sent</h3>
                 <p className="text-primary/70">
-                   Your request is addressed to wahitomusongeadvocates@gmail.com. Your email app should now be open with the message ready to send.
+                    Thank you for contacting us. Your enquiry has been sent to
+                    wahitomusongeadvocates@gmail.com, and our team will be in
+                    touch soon.
                 </p>
-                <a
-                   href="mailto:wahitomusongeadvocates@gmail.com"
-                  className="mt-8 text-sm font-semibold tracking-widest text-secondary hover:text-primary transition-colors"
-                >
-                  OPEN EMAIL DRAFT AGAIN
-                </a>
                 <button 
                   onClick={() => setFormStatus('idle')}
                   className="mt-4 text-sm font-semibold tracking-widest text-primary/60 hover:text-primary transition-colors"
@@ -163,13 +186,38 @@ export function Contact() {
                   ></textarea>
                 </div>
 
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="_gotcha">Leave this field empty</label>
+                  <input
+                    id="_gotcha"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <button 
                   type="submit" 
                   disabled={formStatus === 'submitting'}
+                  aria-busy={formStatus === 'submitting'}
                   className="w-full bg-primary text-white py-4 text-sm font-semibold tracking-widest hover:bg-secondary transition-colors disabled:opacity-70 mt-4"
                 >
                   {formStatus === 'submitting' ? 'SENDING...' : 'SUBMIT REQUEST'}
                 </button>
+
+                {formStatus === 'error' && (
+                  <p className="text-sm text-red-700" role="alert">
+                    We couldn’t send your enquiry right now. Please try again,
+                    or contact us directly at{' '}
+                    <a
+                      href="mailto:wahitomusongeadvocates@gmail.com"
+                      className="font-semibold underline underline-offset-2"
+                    >
+                      wahitomusongeadvocates@gmail.com
+                    </a>
+                    .
+                  </p>
+                )}
               </form>
             )}
           </div>
