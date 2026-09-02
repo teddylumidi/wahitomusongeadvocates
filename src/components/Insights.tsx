@@ -12,7 +12,7 @@ export function Insights() {
               Thought leadership and updates on the evolving legal landscape in Kenya, authored by our partners.
             </p>
           </div>
-          <a href={`${import.meta.env.BASE_URL}#insights`} className="text-sm font-semibold tracking-widest text-secondary hover:text-primary transition-colors flex items-center gap-2 group whitespace-nowrap">
+          <a href={`${import.meta.env.BASE_URL}insights`} className="text-sm font-semibold tracking-widest text-secondary hover:text-primary transition-colors flex items-center gap-2 group whitespace-nowrap">
             VIEW ALL ARTICLES 
             <span className="transform group-hover:translate-x-1 transition-transform">→</span>
           </a>
