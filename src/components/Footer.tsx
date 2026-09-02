@@ -15,18 +15,19 @@ export function Footer() {
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             <a href={`${import.meta.env.BASE_URL}#home`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">HOME</a>
-            <a href={`${import.meta.env.BASE_URL}#about`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">ABOUT</a>
-            <a href={`${import.meta.env.BASE_URL}#practice-areas`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">SERVICES</a>
-            <a href={`${import.meta.env.BASE_URL}#insights`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">INSIGHTS</a>
-            <a href={`${import.meta.env.BASE_URL}#contact`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">CONTACT</a>
+            <a href={`${import.meta.env.BASE_URL}about-me`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">ABOUT</a>
+            <a href={`${import.meta.env.BASE_URL}services`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">SERVICES</a>
+            <a href={`${import.meta.env.BASE_URL}insights`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">INSIGHTS</a>
+            <a href={`${import.meta.env.BASE_URL}contact`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">CONTACT</a>
           </div>
         </div>
         
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary/60">
           <p>© {currentYear} Wahito Musonge & Company Advocates LLP. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-secondary transition-colors">Terms of Service</a>
+            <a href={`${import.meta.env.BASE_URL}privacy-policy`} className="hover:text-secondary transition-colors">Privacy Policy</a>
+            <a href={`${import.meta.env.BASE_URL}terms-and-conditions`} className="hover:text-secondary transition-colors">Terms of Service</a>
+            <a href={`${import.meta.env.BASE_URL}website-disclaimer`} className="hover:text-secondary transition-colors">Website Disclaimer</a>
           </div>
         </div>
       </div>
