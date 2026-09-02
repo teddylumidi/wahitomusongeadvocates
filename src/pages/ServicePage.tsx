@@ -12,7 +12,7 @@ export function ServicePage({ slug }: ServicePageProps) {
   const service = getService(slug);
   const baseUrl = import.meta.env.BASE_URL;
   const homeUrl = `${baseUrl}#home`;
-  const servicesUrl = `${baseUrl}#practice-areas`;
+  const servicesUrl = `${baseUrl}services`;
 
   useEffect(() => {
     if (!service) return;
