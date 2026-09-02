@@ -72,8 +72,8 @@ export function Contact() {
               <div>
                 <h4 className="text-sm font-semibold tracking-widest text-secondary mb-2 uppercase">Location</h4>
                 <p className="max-w-sm font-serif text-lg leading-relaxed">
-                  9th floor, Room 912, Unga House, Muthithi Road, Next to Sarit
-                  Center, Nairobi
+                  9th floor, Room 912, Unga House, Muthithi Road, Westlands,
+                  Next to Sarit Center, Nairobi
                 </p>
               </div>
               <div>
