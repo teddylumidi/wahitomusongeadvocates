@@ -15,10 +15,10 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'HOME', href: `${import.meta.env.BASE_URL}#home` },
-    { name: 'ABOUT', href: `${import.meta.env.BASE_URL}#about` },
-    { name: 'SERVICES', href: `${import.meta.env.BASE_URL}#practice-areas` },
-    { name: 'INSIGHTS', href: `${import.meta.env.BASE_URL}#insights` },
-    { name: 'CONTACT', href: `${import.meta.env.BASE_URL}#contact` },
+    { name: 'ABOUT', href: `${import.meta.env.BASE_URL}about-me` },
+    { name: 'SERVICES', href: `${import.meta.env.BASE_URL}services` },
+    { name: 'INSIGHTS', href: `${import.meta.env.BASE_URL}insights` },
+    { name: 'CONTACT', href: `${import.meta.env.BASE_URL}contact` },
   ];
 
   return (
@@ -28,7 +28,7 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-5 group">
+        <a href={`${import.meta.env.BASE_URL}#home`} className="flex items-center gap-5 group">
           <img 
             src={`${import.meta.env.BASE_URL}images/logo.png`} 
             alt="Wahito Musonge & Company Advocates LLP" 
