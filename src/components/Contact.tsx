@@ -71,20 +71,19 @@ export function Contact() {
             <div className="space-y-8 text-white/90">
               <div>
                 <h4 className="text-sm font-semibold tracking-widest text-secondary mb-2 uppercase">Location</h4>
-                <p className="font-serif text-lg">Nairobi, Kenya</p>
+                <p className="max-w-sm font-serif text-lg leading-relaxed">
+                  9th floor, Room 912, Unga House, Muthithi Road, Next to Sarit
+                  Center, Nairobi
+                </p>
               </div>
               <div>
                 <h4 className="text-sm font-semibold tracking-widest text-secondary mb-2 uppercase">Email</h4>
-                <a href="mailto:nerimamusonge@gmail.com" className="font-serif text-lg hover:text-secondary transition-colors">nerimamusonge@gmail.com</a>
+                <a href="mailto:wahitomusongeadvocates@gmail.com" className="font-serif text-lg hover:text-secondary transition-colors">wahitomusongeadvocates@gmail.com</a>
               </div>
               <div>
                 <h4 className="text-sm font-semibold tracking-widest text-secondary mb-2 uppercase">Telephone</h4>
                 <a href="tel:+254722775294" className="font-serif text-lg hover:text-secondary transition-colors">+254 722 775 294</a>
-              </div>
-              <div>
-                <h4 className="text-sm font-semibold tracking-widest text-secondary mb-2 uppercase">Also reach Mary Wahito Njogu</h4>
-                <a href="mailto:wahitokariukiadvocate@gmail.com" className="font-serif text-lg hover:text-secondary transition-colors">wahitokariukiadvocate@gmail.com</a>
-                <p className="font-serif text-lg">+254 727 150 932</p>
+                <a href="tel:+254727150932" className="mt-1 block font-serif text-lg hover:text-secondary transition-colors">+254 727 150 932</a>
               </div>
             </div>
           </div>
