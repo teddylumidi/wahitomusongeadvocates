@@ -75,7 +75,7 @@ export function PracticeAreas() {
                   <Icon size={23} strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <h3 className="mb-4 font-serif text-2xl text-primary">
-                  {service.title}
+                  {service.overviewTitle ?? service.title}
                 </h3>
                 <p className="flex-1 text-sm leading-7 text-primary/70">
                   {service.description}
