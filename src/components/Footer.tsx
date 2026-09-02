@@ -16,7 +16,7 @@ export function Footer() {
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             <a href={`${import.meta.env.BASE_URL}#home`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">HOME</a>
             <a href={`${import.meta.env.BASE_URL}about-me`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">ABOUT</a>
-            <a href={`${import.meta.env.BASE_URL}services`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">SERVICES</a>
+            <a href={`${import.meta.env.BASE_URL}practice-areas`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">PRACTICE AREAS</a>
             <a href={`${import.meta.env.BASE_URL}insights`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">INSIGHTS</a>
             <a href={`${import.meta.env.BASE_URL}contact`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">CONTACT</a>
           </div>
