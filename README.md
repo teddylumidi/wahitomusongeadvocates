@@ -21,4 +21,7 @@ pnpm run build
 - `public/images/` — local firm imagery and partner photos
 - `public/favicon.svg` — branded navy-and-gold favicon
 
-The enquiry form opens the visitor's email client with a prepared message addressed to both firm email addresses. It does not send email directly from the browser.
+The enquiry form submits in the background to Formspree's HTTPS endpoint
+and delivers enquiries to the verified recipient configured in Formspree without
+opening the visitor's email client. No API keys or private credentials are
+included in the browser bundle.
