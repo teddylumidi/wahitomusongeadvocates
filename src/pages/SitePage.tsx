@@ -9,6 +9,17 @@ type SitePageProps = {
 };
 
 function renderBlock(block: SitePageBlock, index: number) {
+  if (block.type === 'image') {
+    return (
+      <img
+        key={index}
+        src={`${import.meta.env.BASE_URL}images/${block.src}`}
+        alt={block.alt}
+        className="my-10 aspect-[3/2] w-full object-cover grayscale"
+      />
+    );
+  }
+
   if (block.type === 'h2') {
     return (
       <h2 key={index} className="mb-6 mt-16 font-serif text-2xl text-primary md:text-3xl leading-[1.3]">

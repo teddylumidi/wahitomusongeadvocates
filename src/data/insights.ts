@@ -29,7 +29,7 @@ export const insightArticles: InsightArticle[] = [
     aliases: ["5-legal-mistakes-startups-make-in-kenya-and-how-to-avoid-them"],
     title: "5 Legal Mistakes Startups Make in Kenya—And How to Avoid Them",
     date: "May 9, 2025",
-    image: "insight-startups.jpg",
+    image: "insight-5-legal-mistakes-startups-make-in-kenya-and-how-to-avoid-them.png",
     excerpt:
       "Kenya’s startup scene is thriving—with young entrepreneurs launching bold ventures in fintech, e-commerce, agritech, and more. But for every success story, there are many others that fail—not because of lack of funding or ideas—but due to avoidable legal mistakes.",
     author: "Nerima Musonge",
@@ -138,7 +138,7 @@ export const insightArticles: InsightArticle[] = [
     title:
       "8 Common Mistakes that Delay Inheritance in Kenya and How to Avoid Them",
     date: "May 7, 2025",
-    image: "insight-inheritance.jpg",
+    image: "insight-8-common-mistakes-that-delay-inheritance-in-kenya-and-how-to-avoid-them.png",
     excerpt:
       "Inheritance disputes in Kenya can drag on for years—causing emotional stress, family rifts, and even total loss of property. Many delays are caused by avoidable mistakes.",
     author: "Nerima Musonge",
@@ -261,7 +261,7 @@ export const insightArticles: InsightArticle[] = [
     aliases: ["what-to-do-if-someone-has-encroached-on-your-land-in-kenya"],
     title: "What to Do If Someone Has Encroached on Your Land in Kenya",
     date: "May 5, 2025",
-    image: "insight-land.jpg",
+    image: "insight-what-to-do-if-someone-has-encroached-on-your-land-in-kenya.png",
     excerpt:
       "Nothing is more frustrating than discovering that a neighbor, a stranger—or even a relative—has illegally built, cultivated, or fenced off part of your land without your consent or knowledge.",
     author: "Nerima Musonge",

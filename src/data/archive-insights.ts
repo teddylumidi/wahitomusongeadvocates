@@ -5,7 +5,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "do-you-want-to-register-a-political-party-in-kenya",
     title: "Do you want to register a Political Party in Kenya?",
     date: "November 30, 2022",
-    image: "insight-startups.jpg",
+    image: "insight-do-you-want-to-register-a-political-party-in-kenya.png",
     excerpt:
       "You don’t have to wait for the election year to register a Political Party. Let’s help you get started right away.",
     author: "Nerima Musonge",
@@ -236,7 +236,7 @@ export const archiveInsights: InsightArticle[] = [
     title:
       "Summary Dismissal: How to Know if You Were Unfairly Terminated from Work",
     date: "November 30, 2022",
-    image: "insight-land.jpg",
+    image: "insight-summary-dismissal-how-to-know-if-you-were-unfairly-terminated-from-work.png",
     excerpt:
       "Has your employment relationship come to halt? Here’s how to know if you have a legal case against your employer.",
     author: "Nerima Musonge",
@@ -376,7 +376,7 @@ export const archiveInsights: InsightArticle[] = [
     title:
       "Parental Responsibility Agreement: An Incredibly Easy Tool That Works for All Co-Parents",
     date: "December 9, 2022",
-    image: "insight-inheritance.jpg",
+    image: "insight-parental-responsibility-agreement-an-incredibly-easy-tool-that-works-for-all-co-parents.png",
     excerpt:
       "Say goodbye to the back-and-forth arguments with your co-parent and hello to an amicable co-parenting relationship. Here’s what you need to know about the Parental Responsibility Agreement.",
     author: "Nerima Musonge",
@@ -546,7 +546,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "what-are-your-rights-as-a-kenyan-creative",
     title: "What Are Your Rights as a Kenyan Creative?",
     date: "December 16, 2022",
-    image: "insight-startups.jpg",
+    image: "insight-what-are-your-rights-as-a-kenyan-creative.png",
     excerpt:
       "If you are in the creative industry, you understand that it is not a choice but a gift you need to protect and enjoy. Here's a sneak peek into the rights of a Kenyan Creative!",
     author: "Nerima Musonge",
@@ -760,7 +760,7 @@ export const archiveInsights: InsightArticle[] = [
     title:
       "You Asked for Tax Saving Strategies - And Here's What I Recommend for Businesses",
     date: "December 28, 2022",
-    image: "insight-land.jpg",
+    image: "insight-you-asked-for-tax-saving-strategies-and-heres-what-i-recommend-for-businesses.png",
     excerpt:
       "With the new year approaching and your business goals in place, how are you planning to stick to your budget and stay away from KRA's radar? Well, how about using tax-saving strategies? Let’s show you how!",
     author: "Nerima Musonge",
@@ -938,7 +938,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "the-9-fundamentals-you-didnt-know-about-buying-land-in-kenya",
     title: "The 9 Fundamentals You Didn’t Know About Buying Land in Kenya",
     date: "January 20, 2023",
-    image: "insight-land.jpg",
+    image: "insight-the-9-fundamentals-you-didnt-know-about-buying-land-in-kenya.png",
     excerpt:
       "Buying land in Kenya is one of those goals that almost everyone aspires to do in their lifetime. It is so easy to get conned when buying land since most people have no idea what to do before signing the agreement. This guide will help you protect yourself from losing your hard-earned money to cons.",
     author: "Nerima Musonge",
@@ -1068,7 +1068,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "what-are-the-rights-of-arrested-persons-in-kenya-anyway",
     title: "What Are The Rights of Arrested Persons in Kenya, Anyway?",
     date: "January 10, 2024",
-    image: "insight-land.jpg",
+    image: "insight-what-are-the-rights-of-arrested-persons-in-kenya-anyway.png",
     excerpt:
       "If you or your loved one is facing criminal charges in Kenya, this guide will help you learn and exercise your rights throughout the criminal law court process.",
     author: "Nerima Musonge",
@@ -1275,7 +1275,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "all-you-need-to-know-about-wills-and-family-trusts-in-kenya",
     title: "All You Need To Know About Wills And Family Trusts In Kenya",
     date: "February 5, 2024",
-    image: "insight-inheritance.jpg",
+    image: "insight-all-you-need-to-know-about-wills-and-family-trusts-in-kenya.png",
     excerpt:
       "Estate Planning has become a popular topic over the years, with issues such as trusts and wills wiggling their way into every home in Kenya. Here's a simple guide to understanding what wills and family trusts are and how you can apply them to your life.",
     author: "wahitokariuki",
@@ -1391,7 +1391,7 @@ export const archiveInsights: InsightArticle[] = [
     title:
       "Navigating the Maze: Understanding Debt Recovery Legal Process in Kenya",
     date: "April 17, 2024",
-    image: "insight-land.jpg",
+    image: "insight-navigating-the-maze-understanding-debt-recovery-legal-process-in-kenya.png",
     excerpt:
       "In this article, we'll explore the intricacies of the legal process for debt recovery in Kenya, describing the steps involved and offering insights into how to approach debt recovery successfully.",
     author: "Nerima Musonge",
@@ -1507,7 +1507,7 @@ export const archiveInsights: InsightArticle[] = [
     title:
       "Protecting Your Loved Ones: A Legal Guide on Responding to Abductions in Kenya",
     date: "January 6, 2025",
-    image: "insight-inheritance.jpg",
+    image: "insight-protecting-your-loved-ones-a-legal-guide-on-responding-to-abductions-in-kenya.png",
     excerpt:
       "Abduction is a deeply unsettling and traumatic event, particularly when the authorities are suspected of being involved. In Kenya, cases of alleged abductions by both state and non-state actors have drawn significant concern. If a loved one is abducted, whether by law enforcement or otherwise, it is essential to understand your rights, legal procedures, and the actions you can take to secure their safety and seek justice.",
     author: "Nerima Musonge",
@@ -1743,7 +1743,7 @@ export const archiveInsights: InsightArticle[] = [
     title:
       "Say Goodbye To Unnecessary Baby Mama/Baby Daddy Drama: Legal Obligations and Responsibilities",
     date: "January 20, 2025",
-    image: "insight-inheritance.jpg",
+    image: "insight-say-goodbye-to-unnecessary-baby-mama-baby-daddy-drama-legal-obligations-and-responsibilities.png",
     excerpt:
       "In Kenya, the welfare of children is a top priority, and both parents are legally bound to ensure their children’s well-being. Whether the parents are married, separated, or divorced, the law recognizes that both parents are responsible for providing financial support for their children. This article explores the concept of parental monetary contribution for children in Kenya, the legal obligations of both parents, and the ways in which the law ensures that children are adequately supported.",
     author: "Nerima Musonge",
@@ -1958,7 +1958,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "has-your-health-insurance-provider-refused-to-pay-what-next",
     title: "Has Your Health Insurance Provider Refused To Pay? What next?",
     date: "January 10, 2025",
-    image: "insight-land.jpg",
+    image: "insight-has-your-health-insurance-provider-refused-to-pay-what-next.png",
     excerpt:
       "When a health insurance provider refuses to pay for medical bills in Kenya, and a patient dies due to not receiving necessary medical care, there are several avenues that individuals or families can explore under Kenyan law.",
     author: "Nerima Musonge",
@@ -2105,7 +2105,7 @@ export const archiveInsights: InsightArticle[] = [
     slug: "your-rights-as-a-woman-in-a-come-we-stay-relationship-in-kenya",
     title: "Your Rights as a Woman in a Come-We-Stay Relationship in Kenya",
     date: "May 2, 2025",
-    image: "insight-inheritance.jpg",
+    image: "insight-your-rights-as-a-woman-in-a-come-we-stay-relationship-in-kenya.png",
     excerpt:
       "Come-we-stay relationships are a lived reality for many women across Kenya. But what happens when such relationships break down? What are your rights as a woman—especially when property, children, or financial contributions are involved?",
     author: "Nerima Musonge",

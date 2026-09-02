@@ -1,5 +1,6 @@
 export type SitePageBlock =
   | { type: 'p' | 'h2' | 'h3' | 'quote'; text: string }
+  | { type: 'image'; src: string; alt: string }
   | { type: 'ul'; items: string[] };
 
 export type SitePage = {
@@ -211,6 +212,11 @@ export const sitePages: Record<string, SitePage> = {
         type: 'p',
         text: 'Our Knowledge Centre is designed to make the law accessible through practical, easy-to-understand content prepared by our advocates.',
       },
+      {
+        type: 'image',
+        src: 'articles-publications.png',
+        alt: 'Advocate reviewing legal publications',
+      },
       { type: 'h3', text: 'Articles & Publications' },
       {
         type: 'ul',
@@ -219,6 +225,11 @@ export const sitePages: Record<string, SitePage> = {
           'Practical guides for individuals and businesses.',
           'Commentary on significant court decisions and legislative developments.',
         ],
+      },
+      {
+        type: 'image',
+        src: 'legal-alerts.png',
+        alt: 'Advocates reviewing a legal alert together',
       },
       { type: 'h3', text: 'Legal Alerts' },
       {
