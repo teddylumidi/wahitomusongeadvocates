@@ -18,62 +18,65 @@ export function InsightsArchivePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="min-h-screen bg-white font-sans text-foreground">
       <Navbar />
-      <main className="pt-28">
-        <header className="bg-gray-50 py-20 md:py-28">
-          <div className="container mx-auto max-w-5xl px-4 md:px-8">
+      <main className="pt-[90px]">
+        <header className="bg-white py-16 md:py-24 border-b border-gray-100">
+          <div className="container mx-auto max-w-4xl px-4 md:px-8 text-center">
             <a
               href={`${baseUrl}#home`}
-              className="mb-10 inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-secondary transition-colors hover:text-primary"
+              className="mb-8 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-secondary hover:text-primary transition-colors uppercase"
             >
               <ArrowLeft size={15} />
               BACK TO HOME
             </a>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-secondary">
+
+            <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
               Knowledge centre
             </p>
-            <h1 className="font-serif text-4xl leading-tight text-primary md:text-5xl lg:text-6xl">
-              INSIGHTS
+            <h1 className="font-serif text-4xl md:text-5xl text-primary leading-[1.2]">
+              Posts
             </h1>
-            <div className="mt-6 h-0.5 w-16 bg-secondary" />
-            <p className="mt-8 max-w-3xl text-lg leading-relaxed text-primary/70">
+            <div className="mx-auto mt-10 h-px w-24 bg-gray-300" />
+
+            <p className="mt-10 font-serif text-[17px] italic text-secondary max-w-3xl mx-auto leading-relaxed">
               Our Legal Insights provide timely analysis, practical guidance, and
               informed commentary on developments in Kenyan law.
             </p>
           </div>
         </header>
 
-        <section className="container mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <section className="container mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => (
               <a
                 key={article.slug}
                 href={`${baseUrl}insights/${article.slug}`}
-                className="group flex h-full flex-col border border-gray-100 bg-white transition-shadow duration-300 hover:shadow-md"
+                className="group flex flex-col h-full"
               >
-                <div className="relative aspect-[3/2] overflow-hidden bg-gray-200">
+                <div className="relative aspect-[3/2] overflow-hidden bg-gray-100 mb-6">
                   <img
                     src={`${baseUrl}images/${article.image}`}
                     alt={article.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}images/nairobi-skyline.png`;
+                    }}
                   />
                 </div>
-                <div className="flex flex-grow flex-col p-8">
-                  <div className="mb-4 flex items-center gap-4 text-xs font-semibold uppercase tracking-widest text-secondary">
-                    <span>LEGAL INSIGHT</span>
-                    <span className="h-1 w-1 rounded-full bg-gray-300" />
-                    <span className="text-gray-400">{article.date}</span>
+                <div className="flex flex-col flex-grow">
+                  <div className="mb-3 flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
+                    <span>{article.date}</span>
                   </div>
-                  <h2 className="mb-4 font-serif text-xl text-primary transition-colors group-hover:text-secondary">
+                  <h3 className="mb-4 font-serif text-[22px] text-primary transition-colors group-hover:text-secondary leading-[1.3]">
                     {article.title}
-                  </h2>
-                  <p className="mb-6 flex-grow text-sm leading-relaxed text-primary/70">
+                  </h3>
+                  <p className="text-[15px] leading-[1.8] text-primary flex-grow">
                     {article.excerpt}
                   </p>
-                  <span className="mt-auto text-sm font-semibold tracking-widest text-primary transition-colors group-hover:text-secondary">
+                  <div className="mt-6 text-[11px] font-medium tracking-[0.1em] text-primary transition-colors group-hover:text-secondary underline underline-offset-4 uppercase">
                     READ MORE
-                  </span>
+                  </div>
                 </div>
               </a>
             ))}

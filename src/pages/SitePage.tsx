@@ -11,7 +11,7 @@ type SitePageProps = {
 function renderBlock(block: SitePageBlock, index: number) {
   if (block.type === 'h2') {
     return (
-      <h2 key={index} className="mb-5 mt-12 font-serif text-2xl text-primary md:text-3xl">
+      <h2 key={index} className="mb-6 mt-16 font-serif text-2xl text-primary md:text-3xl leading-[1.3]">
         {block.text}
       </h2>
     );
@@ -19,7 +19,7 @@ function renderBlock(block: SitePageBlock, index: number) {
 
   if (block.type === 'h3') {
     return (
-      <h3 key={index} className="mb-4 mt-8 font-serif text-xl text-primary">
+      <h3 key={index} className="mb-4 mt-10 font-serif text-[22px] text-primary leading-[1.3]">
         {block.text}
       </h3>
     );
@@ -29,7 +29,7 @@ function renderBlock(block: SitePageBlock, index: number) {
     return (
       <blockquote
         key={index}
-        className="my-8 border-l-2 border-secondary pl-6 italic leading-relaxed text-primary/70"
+        className="my-10 border-l-2 border-secondary pl-6 italic font-serif text-[17px] leading-relaxed text-secondary"
       >
         {block.text}
       </blockquote>
@@ -38,9 +38,9 @@ function renderBlock(block: SitePageBlock, index: number) {
 
   if (block.type === 'ul') {
     return (
-      <ul key={index} className="mb-6 ml-6 list-disc space-y-3 text-primary/75 marker:text-secondary">
+      <ul key={index} className="mb-8 ml-6 list-disc space-y-4 text-primary text-[15px] marker:text-secondary">
         {block.items.map((item) => (
-          <li key={item} className="pl-2 leading-relaxed">
+          <li key={item} className="pl-2 leading-[1.8]">
             {item}
           </li>
         ))}
@@ -49,7 +49,7 @@ function renderBlock(block: SitePageBlock, index: number) {
   }
 
   return (
-    <p key={index} className="mb-6 leading-[1.9] text-primary/75">
+    <p key={index} className="mb-8 leading-[1.8] text-[15px] text-primary">
       {block.text}
     </p>
   );
@@ -99,85 +99,83 @@ export function SitePage({ slug }: SitePageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="min-h-screen bg-white font-sans text-foreground">
       <Navbar />
-      <main className="pt-28">
-        <header className="bg-gray-50 py-20 md:py-28">
-          <div className="container mx-auto max-w-5xl px-4 md:px-8">
+      <main className="pt-[90px]">
+        <header className="bg-white py-16 md:py-24 border-b border-gray-100">
+          <div className="container mx-auto max-w-4xl px-4 md:px-8 text-center">
             <a
               href={homeUrl}
-              className="mb-10 inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-secondary transition-colors hover:text-primary"
+              className="mb-8 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-secondary hover:text-primary transition-colors uppercase"
             >
               <ArrowLeft size={15} />
               BACK TO HOME
             </a>
-            <div className="grid items-end gap-12 md:grid-cols-[1fr_0.7fr]">
-              <div>
-                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-secondary">
-                  {page.eyebrow ?? 'Wahito Musonge & Company Advocates LLP'}
-                </p>
-                <h1 className="font-serif text-4xl leading-tight text-primary md:text-5xl lg:text-6xl">
-                  {page.title}
-                </h1>
-              </div>
-              {page.image && (
-                <img
-                  src={`${baseUrl}images/${page.image}`}
-                  alt={page.title}
-                  className="aspect-[3/4] w-full object-cover grayscale"
-                />
-              )}
-            </div>
+
+            <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
+              {page.eyebrow ?? 'Wahito Musonge & Company Advocates LLP'}
+            </p>
+            <h1 className="font-serif text-4xl md:text-5xl text-primary leading-[1.2]">
+              {page.title}
+            </h1>
+            <div className="mx-auto mt-10 h-px w-24 bg-gray-300" />
           </div>
         </header>
 
         <article className="container mx-auto max-w-3xl px-4 py-16 md:px-8 md:py-24">
+          {page.image && (
+            <img
+              src={`${baseUrl}images/${page.image}`}
+              alt={page.title}
+              className="w-full max-w-lg mx-auto aspect-square object-cover grayscale mb-16"
+            />
+          )}
           {page.blocks.map(renderBlock)}
 
           {page.slug === 'about-me' && (
-            <div className="mt-16 grid gap-6 border-t border-primary/10 pt-12 sm:grid-cols-2">
+            <div className="mt-16 grid gap-8 border-t border-gray-200 pt-16 sm:grid-cols-2">
               <a
                 href={`${baseUrl}mary-njogu-wahito`}
-                className="group border border-primary/10 bg-gray-50 p-7 transition-colors hover:border-secondary/60 hover:bg-white"
+                className="group border border-gray-100 bg-gray-50 p-8 transition-colors hover:border-gray-300 hover:bg-white text-center"
               >
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
-                  Founding Partner
-                </p>
-                <h3 className="font-serif text-2xl text-primary transition-colors group-hover:text-secondary">
+                <h3 className="font-serif text-[22px] text-primary transition-colors group-hover:text-secondary mb-2">
                   Mary Wahito Njogu
                 </h3>
-                <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-primary">
-                  VIEW PROFILE <ArrowUpRight size={14} />
+                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
+                  Founding Partner
+                </p>
+                <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-primary uppercase underline underline-offset-4">
+                  VIEW PROFILE
                 </span>
               </a>
               <a
                 href={`${baseUrl}managing-partner`}
-                className="group border border-primary/10 bg-gray-50 p-7 transition-colors hover:border-secondary/60 hover:bg-white"
+                className="group border border-gray-100 bg-gray-50 p-8 transition-colors hover:border-gray-300 hover:bg-white text-center"
               >
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
-                  Managing Partner
-                </p>
-                <h3 className="font-serif text-2xl text-primary transition-colors group-hover:text-secondary">
+                <h3 className="font-serif text-[22px] text-primary transition-colors group-hover:text-secondary mb-2">
                   Nerima Musonge
                 </h3>
-                <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-primary">
-                  VIEW PROFILE <ArrowUpRight size={14} />
+                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
+                  Managing Partner
+                </p>
+                <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-primary uppercase underline underline-offset-4">
+                  VIEW PROFILE
                 </span>
               </a>
             </div>
           )}
 
-          <div className="mt-16 flex flex-col gap-5 border-t border-gray-200 pt-10 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-16 flex flex-col gap-6 border-t border-gray-200 pt-10 sm:flex-row sm:items-center sm:justify-between">
             <a
               href={homeUrl}
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-primary transition-colors hover:text-secondary"
+              className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-primary transition-colors hover:text-secondary uppercase"
             >
               <ArrowLeft size={15} />
               BACK TO HOME
             </a>
             <a
               href={`${baseUrl}#contact`}
-              className="inline-flex items-center gap-2 bg-primary px-7 py-4 text-xs font-semibold tracking-widest text-white transition-colors hover:bg-secondary"
+              className="inline-flex items-center gap-2 bg-black px-8 py-3 text-[11px] font-medium tracking-[0.1em] text-white transition-colors hover:bg-black/80 uppercase"
             >
               CONTACT THE FIRM
               <ArrowUpRight size={15} />

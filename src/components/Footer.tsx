@@ -2,27 +2,27 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-12 md:py-16">
-      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+    <footer className="bg-white border-t border-gray-200 py-12 md:py-16">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
-          <div className="w-48">
+          <div className="w-32">
             <img 
               src={`${import.meta.env.BASE_URL}images/logo.png`} 
               alt="Wahito Musonge & Company Advocates LLP" 
-              className="w-full h-auto object-contain mix-blend-multiply"
+              className="w-full h-auto object-contain"
             />
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-            <a href={`${import.meta.env.BASE_URL}#home`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">HOME</a>
-            <a href={`${import.meta.env.BASE_URL}about-me`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">ABOUT</a>
-            <a href={`${import.meta.env.BASE_URL}practice-areas`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">PRACTICE AREAS</a>
-            <a href={`${import.meta.env.BASE_URL}insights`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">INSIGHTS</a>
-            <a href={`${import.meta.env.BASE_URL}contact`} className="text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors">CONTACT</a>
+            <a href={`${import.meta.env.BASE_URL}#home`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">HOME</a>
+            <a href={`${import.meta.env.BASE_URL}about-me`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">ABOUT</a>
+            <a href={`${import.meta.env.BASE_URL}practice-areas`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">PRACTICE AREAS</a>
+            <a href={`${import.meta.env.BASE_URL}insights`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">INSIGHTS</a>
+            <a href={`${import.meta.env.BASE_URL}contact`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">CONTACT</a>
           </div>
         </div>
         
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary/60">
+        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-primary/70 font-sans">
           <p>© {currentYear} Wahito Musonge & Company Advocates LLP. All rights reserved.</p>
           <div className="flex gap-6">
             <a href={`${import.meta.env.BASE_URL}privacy-policy`} className="hover:text-secondary transition-colors">Privacy Policy</a>

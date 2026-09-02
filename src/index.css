@@ -56,19 +56,19 @@
   --popover-foreground: 222 47% 11%;
   --popover-border: 214 32% 91%;
   
-  /* Primary: Navy Blue matching logo */
-  --primary: 223 35% 15%;
+  /* Primary: Dark Grey/Black for text */
+  --primary: 0 0% 15%;
   --primary-foreground: 0 0% 100%;
   
-  /* Secondary: Gold/Bronze accent */
-  --secondary: 43 50% 45%; 
+  /* Secondary: Gold accent */
+  --secondary: 47 43% 52%; /* #B89C49 - adjusting closer to gold */
   --secondary-foreground: 0 0% 100%;
   
   /* Muted: Light gray */
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 0 0% 98%;
+  --muted-foreground: 0 0% 45%;
   
-  --accent: 43 50% 45%;
+  --accent: 47 43% 52%;
   --accent-foreground: 0 0% 100%;
   
   --destructive: 0 84.2% 60.2%;
@@ -77,7 +77,7 @@
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Cardo', serif;
   
-  --radius: 0rem; /* Formal, sharp corners */
+  --radius: 0rem;
 }
 
 @layer base {

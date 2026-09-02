@@ -29,7 +29,7 @@ function renderInsightBlocks(blocks: InsightBlock[]) {
         listItems.push(
           <li
             key={`${index}-${listItems.length}`}
-            className="mb-3 pl-2 leading-relaxed text-primary/75 marker:text-secondary"
+            className="mb-4 pl-2 leading-[1.8] text-[15px] text-primary marker:text-secondary"
           >
             {listBlock.text}
           </li>,
@@ -41,7 +41,7 @@ function renderInsightBlocks(blocks: InsightBlock[]) {
       rendered.push(
         <List
           key={`list-${index}`}
-          className={`mb-6 ml-6 ${listType === "ol" ? "list-decimal" : "list-disc"}`}
+          className={`mb-8 ml-6 ${listType === "ol" ? "list-decimal" : "list-disc"}`}
         >
           {listItems}
         </List>,
@@ -53,14 +53,14 @@ function renderInsightBlocks(blocks: InsightBlock[]) {
       rendered.push(
         <h2
           key={index}
-          className="mb-5 mt-12 text-2xl font-serif text-primary md:text-3xl"
+          className="mb-6 mt-16 text-[26px] md:text-3xl font-serif text-primary leading-[1.3]"
         >
           {block.text}
         </h2>,
       );
     } else if (block.type === "h3") {
       rendered.push(
-        <h3 key={index} className="mb-4 mt-8 text-xl font-serif text-primary">
+        <h3 key={index} className="mb-4 mt-10 text-[22px] font-serif text-primary leading-[1.3]">
           {block.text}
         </h3>,
       );
@@ -68,14 +68,14 @@ function renderInsightBlocks(blocks: InsightBlock[]) {
       rendered.push(
         <blockquote
           key={index}
-          className="my-8 border-l-2 border-secondary pl-6 leading-relaxed italic text-primary/70"
+          className="my-10 border-l-2 border-secondary pl-6 leading-relaxed italic text-[17px] font-serif text-secondary"
         >
           {block.text}
         </blockquote>,
       );
     } else {
       rendered.push(
-        <p key={index} className="mb-6 leading-[1.9] text-primary/75">
+        <p key={index} className="mb-8 leading-[1.8] text-[15px] text-primary">
           {block.text}
         </p>,
       );
@@ -136,41 +136,39 @@ export function InsightPage({ slug }: InsightPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="min-h-screen bg-white font-sans text-foreground">
       <Navbar />
-      <main className="pt-28">
-        <header className="bg-gray-50 py-20 md:py-28">
-          <div className="container mx-auto max-w-5xl px-4 md:px-8">
+      <main className="pt-[90px]">
+        <header className="bg-white py-16 md:py-24 border-b border-gray-100">
+          <div className="container mx-auto max-w-4xl px-4 md:px-8 text-center">
             <a
               href={insightsUrl}
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-secondary hover:text-primary transition-colors mb-10"
+              className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-secondary hover:text-primary transition-colors mb-8 uppercase"
             >
               <ArrowLeft size={15} />
               ALL INSIGHTS
             </a>
-            <div className="grid md:grid-cols-[1fr_0.8fr] gap-12 items-end">
-              <div>
-                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-secondary">
-                  {isImportedArticle ? "Legal Nugget" : "Featured insight"}
-                </p>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-serif text-primary">
-                  {article.title}
-                </h1>
-              </div>
-              <div className="md:pb-2">
-                <p className="text-sm tracking-wide text-primary/60">
-                  {article.date}
-                </p>
-                <p className="mt-2 text-sm text-primary/60">
-                  By {article.author}
-                </p>
-                <div className="w-16 h-0.5 bg-secondary mt-6"></div>
-              </div>
+
+            <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
+              {isImportedArticle ? "Legal Nugget" : "Featured insight"}
+            </p>
+            <h1 className="text-4xl md:text-5xl text-primary leading-[1.2] font-serif">
+              {article.title}
+            </h1>
+            <div className="mx-auto mt-10 h-px w-24 bg-gray-300" />
+
+            <div className="mt-10">
+              <p className="text-[13px] tracking-wide text-primary">
+                {article.date}
+              </p>
+              <p className="mt-2 text-[13px] text-primary">
+                By {article.author}
+              </p>
             </div>
           </div>
         </header>
 
-        <div className="container mx-auto max-w-5xl px-4 md:px-8">
+        <div className="container mx-auto max-w-4xl px-4 md:px-8 mt-16">
           <img
             src={`${import.meta.env.BASE_URL}images/${article.image}`}
             alt=""
@@ -182,16 +180,16 @@ export function InsightPage({ slug }: InsightPageProps) {
           {renderInsightBlocks(article.blocks)}
 
           {(article.categories.length > 0 || article.tags.length > 0) && (
-            <div className="mt-12 border-t border-gray-200 pt-8">
+            <div className="mt-16 border-t border-gray-200 pt-10">
               {article.categories.length > 0 && (
-                <div className="mb-5 flex flex-wrap items-center gap-2">
-                  <span className="mr-2 text-xs font-semibold uppercase tracking-widest text-primary">
+                <div className="mb-6 flex flex-wrap items-center gap-2">
+                  <span className="mr-3 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
                     Categories
                   </span>
                   {article.categories.map((category) => (
                     <span
                       key={category}
-                      className="border border-gray-200 px-3 py-1 text-xs text-primary/65"
+                      className="border border-gray-200 px-4 py-1.5 text-[11px] text-primary"
                     >
                       {category}
                     </span>
@@ -200,11 +198,11 @@ export function InsightPage({ slug }: InsightPageProps) {
               )}
               {article.tags.length > 0 && (
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="mr-2 text-xs font-semibold uppercase tracking-widest text-primary">
+                  <span className="mr-3 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
                     Tags
                   </span>
                   {article.tags.map((tag) => (
-                    <span key={tag} className="text-xs text-primary/55">
+                    <span key={tag} className="text-[13px] text-primary">
                       #{tag}
                     </span>
                   ))}
@@ -214,16 +212,16 @@ export function InsightPage({ slug }: InsightPageProps) {
           )}
 
           {article.relatedArticles && article.relatedArticles.length > 0 && (
-            <aside className="mt-14 border-t border-gray-200 pt-10">
-              <h2 className="mb-6 font-serif text-2xl text-primary">
+            <aside className="mt-16 border-t border-gray-200 pt-12">
+              <h2 className="mb-8 font-serif text-[22px] text-primary">
                 Related insights
               </h2>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {article.relatedArticles.map((relatedArticle) => (
                   <a
                     key={relatedArticle.slug}
                     href={`${import.meta.env.BASE_URL}insights/${relatedArticle.slug}`}
-                    className="border border-gray-200 p-4 text-sm leading-relaxed text-primary transition-colors hover:border-secondary hover:text-secondary"
+                    className="border border-gray-200 p-6 text-[14px] leading-[1.6] text-primary transition-colors hover:border-secondary hover:text-secondary"
                   >
                     {relatedArticle.title}
                   </a>
@@ -232,17 +230,17 @@ export function InsightPage({ slug }: InsightPageProps) {
             </aside>
           )}
 
-          <div className="mt-16 pt-10 border-t border-gray-200 flex flex-col sm:flex-row gap-5 sm:items-center sm:justify-between">
+          <div className="mt-20 pt-12 border-t border-gray-200 flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between">
             <a
               href={homeUrl}
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-primary hover:text-secondary transition-colors"
+              className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase"
             >
               <ArrowLeft size={15} />
               BACK TO HOME
             </a>
             <a
               href={`${import.meta.env.BASE_URL}#contact`}
-              className="inline-flex items-center gap-2 bg-primary text-white px-7 py-4 text-xs font-semibold tracking-widest hover:bg-secondary transition-colors"
+              className="inline-flex items-center gap-2 bg-black text-white px-8 py-3 text-[11px] font-medium tracking-[0.1em] hover:bg-black/80 transition-colors uppercase"
             >
               DISCUSS YOUR MATTER
               <ArrowUpRight size={15} />
