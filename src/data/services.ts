@@ -6,6 +6,7 @@ export type ServiceSection = {
 export type Service = {
   slug: string;
   title: string;
+  overviewTitle?: string;
   description: string;
   tagline?: string;
   intro: string[];
@@ -110,6 +111,7 @@ export const services: Service[] = [
   {
     slug: 'corporate-commercial',
     title: 'Corporate & Commercial',
+    overviewTitle: 'Corporate & Commercial Law',
     description:
       'Businesses operate in an increasingly complex legal and regulatory environment that demands proactive legal counsel. Our Corporate & Commercial practice advises businesses, entrepreneurs, financial institutions, investors, and public entities on commercial transactions, corporate governance, regulatory compliance, contract negotiation, banking and finance, tax, intellectual property, data protection, insurance, and mining. We work closely with our clients to manage legal risk, facilitate growth, and support informed commercial decision-making.',
     tagline: 'Strategic Legal Counsel for Businesses, Investors, and Entrepreneurs.',
