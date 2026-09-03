@@ -14,9 +14,9 @@ export function WhatsAppButton() {
       </span>
       <span className="h-12 w-12 overflow-hidden rounded-full bg-white sm:h-14 sm:w-14">
         <img
-          src={`${baseUrl}images/whatsapp-icon.jfif`}
+          src={`${baseUrl}images/whatsapp-icon.png`}
           alt=""
-          className="h-full w-full scale-[1.45] object-cover"
+          className="h-full w-full object-contain"
         />
       </span>
     </a>
