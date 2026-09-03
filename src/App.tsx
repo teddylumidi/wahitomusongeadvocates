@@ -6,6 +6,7 @@ import { ServicePage } from '@/pages/ServicePage';
 import { ServicesPage } from '@/pages/ServicesPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { SitePage } from '@/pages/SitePage';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 function App() {
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -22,21 +23,24 @@ function App() {
 
   return (
     <ErrorBoundary resetKey="root">
-      {serviceMatch ? (
-        <ServicePage slug={serviceMatch[1]} />
-      ) : insightMatch ? (
-        <InsightPage slug={insightMatch[1]} />
-      ) : sitePageSlug ? (
-        <SitePage slug={sitePageSlug} />
-      ) : isInsightsArchive ? (
-        <InsightsArchivePage />
-      ) : isServicesPage ? (
-        <ServicesPage />
-      ) : isContactPage ? (
-        <ContactPage />
-      ) : (
-        <Home />
-      )}
+      <>
+        {serviceMatch ? (
+          <ServicePage slug={serviceMatch[1]} />
+        ) : insightMatch ? (
+          <InsightPage slug={insightMatch[1]} />
+        ) : sitePageSlug ? (
+          <SitePage slug={sitePageSlug} />
+        ) : isInsightsArchive ? (
+          <InsightsArchivePage />
+        ) : isServicesPage ? (
+          <ServicesPage />
+        ) : isContactPage ? (
+          <ContactPage />
+        ) : (
+          <Home />
+        )}
+        <WhatsAppButton />
+      </>
     </ErrorBoundary>
   );
 }

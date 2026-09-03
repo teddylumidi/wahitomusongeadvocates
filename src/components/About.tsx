@@ -36,34 +36,42 @@ export function About() {
           <h2 className="text-3xl md:text-4xl font-serif text-primary mb-6">Meet our team</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-start max-w-4xl mx-auto mt-16">
-          {/* Partner 1 */}
-          <div className="group text-center">
-            <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-gray-100">
+        <div className="grid gap-10 md:grid-cols-2 lg:gap-16 items-start max-w-5xl mx-auto mt-16">
+          <a href={`${import.meta.env.BASE_URL}mary-njogu-wahito`} className="group block md:mt-10">
+            <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 shadow-[0_18px_45px_rgba(0,0,0,0.13)]">
               <img
                 src={`${import.meta.env.BASE_URL}images/mary-wahito-njogu.jpeg`}
                 alt="Mary Wahito Njogu"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
               />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-6 pb-7 pt-24 text-left">
+                <span className="mb-3 block h-px w-12 bg-secondary transition-all duration-300 group-hover:w-20" />
+                <h3 className="text-3xl font-serif text-white">Mary Wahito Njogu</h3>
+                <p className="mt-2 text-[10px] font-medium tracking-[0.16em] text-white/75 uppercase">Founding Partner</p>
+                <span className="mt-5 inline-block text-[10px] font-semibold tracking-[0.14em] text-secondary uppercase">
+                  View Profile →
+                </span>
+              </div>
             </div>
-            <h3 className="text-2xl font-serif text-primary mb-2">Mary Wahito Njogu</h3>
-            <p className="text-[11px] font-medium tracking-[0.1em] text-secondary mb-4 uppercase">Founding Partner</p>
-            <a href={`${import.meta.env.BASE_URL}mary-njogu-wahito`} className="inline-block mt-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors underline underline-offset-4">SEE MORE</a>
-          </div>
+          </a>
 
-          {/* Partner 2 */}
-          <div className="group text-center">
-            <div className="relative overflow-hidden aspect-[3/4] mb-6 bg-gray-100">
+          <a href={`${import.meta.env.BASE_URL}managing-partner`} className="group block">
+            <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 shadow-[0_18px_45px_rgba(0,0,0,0.13)]">
               <img
                 src={`${import.meta.env.BASE_URL}images/nerima-musonge.jpeg`}
                 alt="Nerima Musonge"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
               />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-6 pb-7 pt-24 text-left">
+                <span className="mb-3 block h-px w-12 bg-secondary transition-all duration-300 group-hover:w-20" />
+                <h3 className="text-3xl font-serif text-white">Nerima Musonge</h3>
+                <p className="mt-2 text-[10px] font-medium tracking-[0.16em] text-white/75 uppercase">Managing Partner</p>
+                <span className="mt-5 inline-block text-[10px] font-semibold tracking-[0.14em] text-secondary uppercase">
+                  View Profile →
+                </span>
+              </div>
             </div>
-            <h3 className="text-2xl font-serif text-primary mb-2">Nerima Musonge</h3>
-            <p className="text-[11px] font-medium tracking-[0.1em] text-secondary mb-4 uppercase">Managing Partner</p>
-            <a href={`${import.meta.env.BASE_URL}managing-partner`} className="inline-block mt-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors underline underline-offset-4">SEE MORE</a>
-          </div>
+          </a>
         </div>
       </div>
     </section>

@@ -147,31 +147,33 @@ export function SitePage({ slug }: SitePageProps) {
             <div className="mt-16 grid gap-8 border-t border-gray-200 pt-16 sm:grid-cols-2">
               <a
                 href={`${baseUrl}mary-njogu-wahito`}
-                className="group border border-gray-100 bg-gray-50 p-8 transition-colors hover:border-gray-300 hover:bg-white text-center"
+                className="group overflow-hidden border border-gray-100 bg-gray-50 transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-white hover:shadow-xl"
               >
-                <h3 className="font-serif text-[22px] text-primary transition-colors group-hover:text-secondary mb-2">
-                  Mary Wahito Njogu
-                </h3>
-                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
-                  Founding Partner
-                </p>
-                <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-primary uppercase underline underline-offset-4">
-                  VIEW PROFILE
-                </span>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img src={`${baseUrl}images/mary-wahito-njogu.jpeg`} alt="Mary Wahito Njogu" className="h-full w-full object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5 pt-14">
+                    <h3 className="font-serif text-[24px] text-white">Mary Wahito Njogu</h3>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">Founding Partner</p>
+                  <span className="text-[11px] font-medium tracking-[0.1em] text-primary uppercase underline underline-offset-4">View Profile</span>
+                </div>
               </a>
               <a
                 href={`${baseUrl}managing-partner`}
-                className="group border border-gray-100 bg-gray-50 p-8 transition-colors hover:border-gray-300 hover:bg-white text-center"
+                className="group overflow-hidden border border-gray-100 bg-gray-50 transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-white hover:shadow-xl"
               >
-                <h3 className="font-serif text-[22px] text-primary transition-colors group-hover:text-secondary mb-2">
-                  Nerima Musonge
-                </h3>
-                <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">
-                  Managing Partner
-                </p>
-                <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-primary uppercase underline underline-offset-4">
-                  VIEW PROFILE
-                </span>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img src={`${baseUrl}images/nerima-musonge.jpeg`} alt="Nerima Musonge" className="h-full w-full object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5 pt-14">
+                    <h3 className="font-serif text-[24px] text-white">Nerima Musonge</h3>
+                  </div>
+                </div>
+                <div className="p-6 text-center">
+                  <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.1em] text-secondary">Managing Partner</p>
+                  <span className="text-[11px] font-medium tracking-[0.1em] text-primary uppercase underline underline-offset-4">View Profile</span>
+                </div>
               </a>
             </div>
           )}
