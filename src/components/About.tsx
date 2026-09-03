@@ -30,6 +30,9 @@ export function About() {
         </div>
 
         <div className="max-w-3xl mx-auto text-center border-t border-gray-300 pt-24">
+          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.14em] text-secondary">
+            Our Services
+          </p>
           <h2 className="text-3xl md:text-4xl font-serif text-primary mb-6">Meet our team</h2>
         </div>
 
@@ -45,7 +48,7 @@ export function About() {
             </div>
             <h3 className="text-2xl font-serif text-primary mb-2">Mary Wahito Njogu</h3>
             <p className="text-[11px] font-medium tracking-[0.1em] text-secondary mb-4 uppercase">Founding Partner</p>
-            <a href={`${import.meta.env.BASE_URL}mary-njogu-wahito`} className="inline-block mt-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors underline underline-offset-4">READ MORE</a>
+            <a href={`${import.meta.env.BASE_URL}mary-njogu-wahito`} className="inline-block mt-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors underline underline-offset-4">SEE MORE</a>
           </div>
 
           {/* Partner 2 */}
@@ -59,7 +62,7 @@ export function About() {
             </div>
             <h3 className="text-2xl font-serif text-primary mb-2">Nerima Musonge</h3>
             <p className="text-[11px] font-medium tracking-[0.1em] text-secondary mb-4 uppercase">Managing Partner</p>
-            <a href={`${import.meta.env.BASE_URL}managing-partner`} className="inline-block mt-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors underline underline-offset-4">READ MORE</a>
+            <a href={`${import.meta.env.BASE_URL}managing-partner`} className="inline-block mt-2 text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors underline underline-offset-4">SEE MORE</a>
           </div>
         </div>
       </div>

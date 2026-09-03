@@ -83,6 +83,12 @@ export const sitePages: Record<string, SitePage> = {
         text: 'Mary has valuable experience in governance, management, and stakeholder engagement through her work with non-governmental organizations, equipping her with a multidisciplinary perspective that enhances her quality of legal counsel.',
       },
       {
+        type: 'h3',
+        text: 'Contact',
+      },
+      { type: 'p', text: 'EMAIL: wahitokariukiadvocate@gmail.com' },
+      { type: 'p', text: 'TEL. NO.: +254 727 150 932' },
+      {
         type: 'p',
         text: 'She has successfully represented clients before specialized tribunals, subordinate courts, High Court, and the Court of Appeal, earning a reputation for strategic advocacy, sound legal judgment, and practical, results-oriented solutions.',
       },
@@ -90,9 +96,6 @@ export const sitePages: Record<string, SitePage> = {
         type: 'p',
         text: 'She holds a Bachelor of Laws (LL.B.) degree from the University of Nairobi and a Postgraduate Diploma in Law from the Kenya School of Law',
       },
-      { type: 'h3', text: 'Contact' },
-      { type: 'p', text: 'EMAIL: wahitokariukiadvocate@gmail.com' },
-      { type: 'p', text: 'TEL. NO.: +254 727 150 932' },
       {
         type: 'quote',
         text: '"In matters of truth and justice, there is no difference between large and small problems, for issues concerning the treatment of people are all the same." ~Albert Einstein~',
