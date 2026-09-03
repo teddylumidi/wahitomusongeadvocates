@@ -7,15 +7,13 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Wahito Musonge Advocates on WhatsApp at 0722 775 294"
-      className="fixed bottom-5 right-4 z-50 flex rounded-full bg-[#25D366] p-2.5 text-white shadow-[0_12px_35px_rgba(0,0,0,0.28)] ring-2 ring-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(37,211,102,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/35 sm:bottom-7 sm:right-7"
+      className="fixed bottom-5 right-4 z-50 block h-16 w-16 rounded-full shadow-[0_10px_28px_rgba(0,0,0,0.24)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 sm:bottom-7 sm:right-7 sm:h-[72px] sm:w-[72px]"
     >
-      <span className="h-12 w-12 overflow-hidden rounded-full bg-white sm:h-14 sm:w-14">
-        <img
-          src={`${baseUrl}images/whatsapp-icon.png`}
-          alt=""
-          className="h-full w-full object-contain"
-        />
-      </span>
+      <img
+        src={`${baseUrl}images/whatsapp-icon.png`}
+        alt=""
+        className="h-full w-full object-contain"
+      />
     </a>
   );
 }
