@@ -7,8 +7,14 @@ export function About() {
             <h2 className="text-3xl md:text-4xl lg:text-[40px] font-serif text-secondary mb-8 leading-[1.2] uppercase">
               WELCOME TO WAHITO MUSONGE & COMPANY ADVOCATES LLP
             </h2>
+            <p className="text-[15px] text-primary leading-[1.8] font-sans mb-5">
+              Wahito Musonge &amp; Company Advocates LLP is a full-service law firm committed to providing strategic, commercially focused legal solutions to individuals, businesses, institutions, and public sector entities. We combine technical excellence with practical insight to help our clients navigate complex legal and regulatory landscapes with confidence.
+            </p>
+            <p className="text-[15px] text-primary leading-[1.8] font-sans mb-5">
+              Every engagement is approached with professionalism, integrity, and meticulous attention to detail, ensuring that our clients receive advice that is both legally sound and commercially practical.
+            </p>
             <p className="text-[15px] text-primary leading-[1.8] font-sans mb-8">
-              We believe effective legal representation requires more than legal knowledge. It requires understanding our clients' objectives and delivering practical solutions. We partner with businesses and individuals across Kenya to resolve disputes, manage legal risk, and protect their interests with professionalism and integrity.
+              We believe exceptional legal representation extends beyond resolving disputes. It is about anticipating risk, protecting our clients’ interests, and creating lasting value through trusted legal partnerships.
             </p>
             <a
               href="#contact"
@@ -19,12 +25,13 @@ export function About() {
           </div>
 
           <div className="flex justify-center md:justify-end">
-            <div className="w-full max-w-[400px] aspect-square bg-[#1a1f33] flex items-center justify-center p-12">
+            <div className="relative w-full max-w-[520px] overflow-hidden">
               <img
-                src={`${import.meta.env.BASE_URL}images/logo.png`}
-                alt="Wahito Musonge & Company Law Firm"
-                className="w-full h-auto object-contain"
+                src={`${import.meta.env.BASE_URL}images/black-woman-in-office.webp`}
+                alt="Legal professional working with a client by phone"
+                className="aspect-[4/3] h-full w-full object-cover"
               />
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-secondary" />
             </div>
           </div>
         </div>
