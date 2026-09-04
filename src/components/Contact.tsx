@@ -65,6 +65,14 @@ export function Contact() {
             <h2 className="text-3xl md:text-[40px] font-serif text-secondary leading-[1.2]">
               Book an Appointment<br />/ Make an Enquiry
             </h2>
+            <div className="mt-10 border-l-2 border-secondary pl-5">
+              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-secondary">
+                Location
+              </p>
+              <address className="max-w-sm text-[15px] not-italic leading-[1.8] text-primary">
+                9th Floor, Room 912, Unga House, Muthithi Road, Westlands, next to Sarit Center, Nairobi
+              </address>
+            </div>
           </div>
 
           <div>

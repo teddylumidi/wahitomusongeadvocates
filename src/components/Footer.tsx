@@ -21,6 +21,11 @@ export function Footer() {
             <a href={`${import.meta.env.BASE_URL}contact`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">CONTACT</a>
           </div>
         </div>
+
+        <address className="mb-10 border-t border-gray-200 pt-8 text-center text-[13px] not-italic leading-relaxed text-primary/70">
+          <span className="font-semibold uppercase tracking-[0.1em] text-primary">Location:</span>{' '}
+          9th Floor, Room 912, Unga House, Muthithi Road, Westlands, next to Sarit Center, Nairobi
+        </address>
         
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-primary/70 font-sans">
           <p>© {currentYear} Wahito Musonge & Company Advocates LLP. All rights reserved.</p>
