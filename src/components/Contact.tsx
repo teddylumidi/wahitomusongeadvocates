@@ -83,6 +83,27 @@ export function Contact() {
               Get in touch with us today to discuss how we can help protect your interests and achieve your objectives.
             </p>
 
+            <div className="mb-10 flex flex-wrap gap-x-6 gap-y-3 border-y border-gray-200 py-5">
+              <a
+                href={`${import.meta.env.BASE_URL}practice-areas`}
+                className="text-[11px] font-medium uppercase tracking-[0.1em] text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Explore practice areas
+              </a>
+              <a
+                href={`${import.meta.env.BASE_URL}insights`}
+                className="text-[11px] font-medium uppercase tracking-[0.1em] text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Read our insights
+              </a>
+              <a
+                href={`${import.meta.env.BASE_URL}legalnuggets`}
+                className="text-[11px] font-medium uppercase tracking-[0.1em] text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Visit Legal Nuggets
+              </a>
+            </div>
+
             {formStatus === 'success' ? (
               <div className="bg-gray-50 border border-gray-200 p-12 text-center">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">

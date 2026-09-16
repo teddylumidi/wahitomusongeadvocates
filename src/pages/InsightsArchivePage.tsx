@@ -43,6 +43,20 @@ export function InsightsArchivePage() {
               Our Legal Insights provide timely analysis, practical guidance, and
               informed commentary on developments in Kenyan law.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-5 text-[11px] font-medium uppercase tracking-[0.1em]">
+              <a
+                href={`${baseUrl}legalnuggets`}
+                className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Explore Legal Nuggets
+              </a>
+              <a
+                href={`${baseUrl}contact`}
+                className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Discuss your matter
+              </a>
+            </div>
           </div>
         </header>
 

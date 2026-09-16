@@ -6,26 +6,32 @@ import { Footer } from '@/components/Footer';
 const topics = [
   {
     title: 'Employment Law Updates',
+    serviceSlug: 'employment-labour-law',
     text: 'Stay informed on emerging employment legislation, workplace compliance requirements, disciplinary procedures, redundancy processes, and recent decisions from the Employment and Labour Relations Court.',
   },
   {
     title: 'Commercial & Corporate Insights',
+    serviceSlug: 'corporate-commercial',
     text: 'Explore practical guidance on commercial transactions, contract drafting, regulatory obligations, corporate governance, and strategies for managing legal risk in business.',
   },
   {
     title: 'Property & Conveyancing',
+    serviceSlug: 'property-real-estate',
     text: 'Understand key legal considerations surrounding land transactions, property ownership, leases, due diligence, and developments in Kenyan property law.',
   },
   {
     title: 'Tax & Regulatory Compliance',
+    serviceSlug: 'regulatory-public-law',
     text: 'Keep up to date with tax obligations, regulatory requirements, compliance frameworks, and significant decisions affecting businesses and taxpayers.',
   },
   {
     title: 'Family & Succession Law',
+    serviceSlug: 'family-children-succession',
     text: "Access clear guidance on estate planning, succession, wills, probate, matrimonial property, and family law to help safeguard your family's future.",
   },
   {
     title: 'Litigation & Dispute Resolution',
+    serviceSlug: 'dispute-resolution',
     text: 'Gain insights into court procedures, alternative dispute resolution, debt recovery, commercial litigation, and practical strategies for resolving disputes efficiently.',
   },
 ];
@@ -81,6 +87,20 @@ export function LegalNuggetsPage() {
               Join our WhatsApp Community Today
               <ArrowUpRight size={15} />
             </a>
+            <div className="mt-8 flex flex-wrap justify-center gap-5 text-[11px] font-medium uppercase tracking-[0.1em]">
+              <a
+                href={`${baseUrl}insights`}
+                className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Read legal insights
+              </a>
+              <a
+                href={`${baseUrl}contact`}
+                className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+              >
+                Speak with an advocate
+              </a>
+            </div>
           </div>
         </section>
 
@@ -113,11 +133,22 @@ export function LegalNuggetsPage() {
                 <article key={topic.title}>
                   <div className="mb-5 text-2xl text-secondary">✦</div>
                   <h3 className="font-sans text-[15px] font-semibold text-primary">
-                    {topic.title}
+                    <a
+                      href={`${baseUrl}services/${topic.serviceSlug}`}
+                      className="transition-colors hover:text-secondary"
+                    >
+                      {topic.title}
+                    </a>
                   </h3>
                   <p className="mt-5 text-[15px] leading-[1.8] text-primary">
                     {topic.text}
                   </p>
+                  <a
+                    href={`${baseUrl}services/${topic.serviceSlug}`}
+                    className="mt-4 inline-block text-[10px] font-semibold uppercase tracking-[0.12em] text-secondary underline underline-offset-4"
+                  >
+                    View related service
+                  </a>
                 </article>
               ))}
             </div>
@@ -198,6 +229,27 @@ export function LegalNuggetsPage() {
                 Nerima Musonge · Managing Partner
               </footer>
             </blockquote>
+
+            <div className="mt-16 flex flex-wrap justify-center gap-4 border-t border-gray-200 pt-10">
+              <a
+                href={`${baseUrl}insights`}
+                className="border border-gray-300 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:border-secondary hover:text-secondary"
+              >
+                Browse all insights
+              </a>
+              <a
+                href={`${baseUrl}practice-areas`}
+                className="border border-gray-300 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:border-secondary hover:text-secondary"
+              >
+                View all practice areas
+              </a>
+              <a
+                href={`${baseUrl}contact`}
+                className="bg-primary px-6 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-secondary"
+              >
+                Contact the firm
+              </a>
+            </div>
           </div>
         </section>
       </main>

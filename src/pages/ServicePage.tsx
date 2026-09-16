@@ -167,11 +167,31 @@ export function ServicePage({ slug }: ServicePageProps) {
               BACK TO HOME
             </a>
             <a
-              href={`${baseUrl}#contact`}
+              href={`${baseUrl}contact`}
               className="inline-flex items-center gap-2 bg-black px-8 py-3 text-[11px] font-medium tracking-[0.1em] text-white transition-colors hover:bg-black/80 uppercase"
             >
               DISCUSS YOUR MATTER
               <ArrowUpRight size={15} />
+            </a>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-5 text-[11px] font-medium uppercase tracking-[0.1em]">
+            <a
+              href={`${baseUrl}insights`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Read legal insights
+            </a>
+            <a
+              href={`${baseUrl}legalnuggets`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Explore Legal Nuggets
+            </a>
+            <a
+              href={`${baseUrl}about-me`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Meet the firm
             </a>
           </div>
         </article>

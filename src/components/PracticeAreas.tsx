@@ -95,6 +95,27 @@ export function PracticeAreas() {
               </div>
             ))}
           </div>
+
+          <div className="mt-16 flex flex-wrap justify-center gap-4 border-t border-gray-200 pt-10">
+            <a
+              href={`${import.meta.env.BASE_URL}legalnuggets`}
+              className="border border-gray-300 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:border-secondary hover:text-secondary"
+            >
+              Explore Legal Nuggets
+            </a>
+            <a
+              href={`${import.meta.env.BASE_URL}insights`}
+              className="border border-gray-300 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-primary transition-colors hover:border-secondary hover:text-secondary"
+            >
+              Read Legal Insights
+            </a>
+            <a
+              href={`${import.meta.env.BASE_URL}contact`}
+              className="bg-primary px-6 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-secondary"
+            >
+              Discuss Your Matter
+            </a>
+          </div>
         </div>
       </div>
     </section>

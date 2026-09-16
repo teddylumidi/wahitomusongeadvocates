@@ -199,6 +199,26 @@ export function SitePage({ slug }: SitePageProps) {
               <ArrowUpRight size={15} />
             </a>
           </div>
+          <div className="mt-8 flex flex-wrap gap-5 text-[11px] font-medium uppercase tracking-[0.1em]">
+            <a
+              href={`${baseUrl}practice-areas`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Explore practice areas
+            </a>
+            <a
+              href={`${baseUrl}insights`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Read legal insights
+            </a>
+            <a
+              href={`${baseUrl}legalnuggets`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Visit Legal Nuggets
+            </a>
+          </div>
         </article>
       </main>
       <Footer />

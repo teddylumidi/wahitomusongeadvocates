@@ -22,6 +22,12 @@ export function About() {
             >
               Book an Appointment Today!
             </a>
+            <a
+              href={`${import.meta.env.BASE_URL}about-me`}
+              className="ml-6 inline-block text-[11px] font-medium uppercase tracking-[0.1em] text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Learn more about the firm
+            </a>
           </div>
 
           <div className="flex justify-center md:justify-end">

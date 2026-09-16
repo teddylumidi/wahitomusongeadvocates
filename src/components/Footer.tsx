@@ -18,6 +18,7 @@ export function Footer() {
             <a href={`${import.meta.env.BASE_URL}about-me`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">ABOUT</a>
             <a href={`${import.meta.env.BASE_URL}practice-areas`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">PRACTICE AREAS</a>
             <a href={`${import.meta.env.BASE_URL}insights`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">INSIGHTS</a>
+            <a href={`${import.meta.env.BASE_URL}legalnuggets`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">LEGAL NUGGETS</a>
             <a href={`${import.meta.env.BASE_URL}contact`} className="text-[11px] font-medium tracking-[0.1em] text-primary hover:text-secondary transition-colors uppercase">CONTACT</a>
           </div>
         </div>
@@ -30,6 +31,7 @@ export function Footer() {
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-primary/70 font-sans">
           <p>© {currentYear} Wahito Musonge & Company Advocates LLP. All rights reserved.</p>
           <div className="flex gap-6">
+            <a href={`${import.meta.env.BASE_URL}mary-njogu-wahito`} className="hover:text-secondary transition-colors">Our Team</a>
             <a href={`${import.meta.env.BASE_URL}privacy-policy`} className="hover:text-secondary transition-colors">Privacy Policy</a>
             <a href={`${import.meta.env.BASE_URL}terms-and-conditions`} className="hover:text-secondary transition-colors">Terms of Service</a>
             <a href={`${import.meta.env.BASE_URL}website-disclaimer`} className="hover:text-secondary transition-colors">Website Disclaimer</a>

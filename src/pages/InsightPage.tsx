@@ -96,7 +96,8 @@ export function InsightPage({ slug }: InsightPageProps) {
   );
   const article = featuredArticle ?? importedArticle;
   const homeUrl = `${import.meta.env.BASE_URL}#home`;
-  const insightsUrl = `${import.meta.env.BASE_URL}#insights`;
+  const baseUrl = import.meta.env.BASE_URL;
+  const insightsUrl = `${baseUrl}insights`;
   const isImportedArticle = !featuredArticle && Boolean(importedArticle);
 
   useEffect(() => {
@@ -239,11 +240,25 @@ export function InsightPage({ slug }: InsightPageProps) {
               BACK TO HOME
             </a>
             <a
-              href={`${import.meta.env.BASE_URL}#contact`}
+              href={`${baseUrl}contact`}
               className="inline-flex items-center gap-2 bg-black text-white px-8 py-3 text-[11px] font-medium tracking-[0.1em] hover:bg-black/80 transition-colors uppercase"
             >
               DISCUSS YOUR MATTER
               <ArrowUpRight size={15} />
+            </a>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-5 text-[11px] font-medium uppercase tracking-[0.1em]">
+            <a
+              href={`${baseUrl}practice-areas`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Explore practice areas
+            </a>
+            <a
+              href={`${baseUrl}legalnuggets`}
+              className="text-primary underline underline-offset-4 transition-colors hover:text-secondary"
+            >
+              Visit Legal Nuggets
             </a>
           </div>
         </article>

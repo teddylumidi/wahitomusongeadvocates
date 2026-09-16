@@ -18,6 +18,7 @@ export function Navbar() {
     { name: 'ABOUT', href: `${import.meta.env.BASE_URL}about-me` },
     { name: 'PRACTICE AREAS', href: `${import.meta.env.BASE_URL}practice-areas` },
     { name: 'INSIGHTS', href: `${import.meta.env.BASE_URL}insights` },
+    { name: 'LEGAL NUGGETS', href: `${import.meta.env.BASE_URL}legalnuggets` },
     { name: 'CONTACT', href: `${import.meta.env.BASE_URL}contact` },
   ];
 
