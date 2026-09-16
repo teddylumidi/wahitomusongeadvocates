@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { getSitePage, type SitePageBlock } from '@/data/site-pages';
+import { LegalNuggetsPage } from '@/pages/LegalNuggetsPage';
 
 type SitePageProps = {
   slug: string;
@@ -67,6 +68,10 @@ function renderBlock(block: SitePageBlock, index: number) {
 }
 
 export function SitePage({ slug }: SitePageProps) {
+  if (slug === 'legalnuggets') {
+    return <LegalNuggetsPage />;
+  }
+
   const page = getSitePage(slug);
   const baseUrl = import.meta.env.BASE_URL;
   const homeUrl = `${baseUrl}#home`;

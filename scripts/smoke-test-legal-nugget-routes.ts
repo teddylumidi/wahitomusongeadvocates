@@ -15,7 +15,7 @@ import {
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const appDirectory = resolve(scriptDirectory, "..");
-const workspaceDirectory = resolve(appDirectory, "../..");
+const workspaceDirectory = resolve(appDirectory, "..");
 const defaultExportPath = resolve(
   workspaceDirectory,
   "attached_assets/data_1788339010602.zip",

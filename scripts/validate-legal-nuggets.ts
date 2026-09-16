@@ -18,7 +18,7 @@ type ExportPost = {
 };
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
-const workspaceDirectory = resolve(scriptDirectory, "../../..");
+const workspaceDirectory = resolve(scriptDirectory, "..");
 const defaultExportPath = resolve(
   workspaceDirectory,
   "attached_assets/data_1788339010602.zip",
