@@ -1,0 +1,460 @@
+Use this Replit prompt. It assumes the cloned WordPress site is now a custom website, so the owner needs a **secure admin/content-management system**, not a WordPress login recreated on the front end.
+
+```text
+PROMPT:
+
+Add a secure, fail-safe content management system (CMS) to this cloned website so the website owner can log in and independently create, edit, publish, unpublish, and delete articles/blog posts without needing a developer.
+
+IMPORTANT:
+Do NOT break, redesign, or remove any existing website functionality, pages, styling, content, navigation, responsiveness, SEO structure, or integrations. Preserve the existing design exactly unless a small UI addition is required for the CMS.
+
+BUILD THIS AS A PROPER PRODUCTION-READY FEATURE.
+
+1. ADMIN LOGIN
+
+Create a secure owner/admin login system.
+
+Requirements:
+- Dedicated admin login page, e.g. /admin/login
+- Username or email + password authentication
+- Passwords must NEVER be stored as plain text.
+- Use secure password hashing.
+- Use secure sessions/authentication.
+- Prevent unauthorized access to all admin pages.
+- Automatically redirect unauthenticated users to the login page.
+- Include logout functionality.
+- Include "Remember me" only if it can be implemented securely.
+- Include proper authentication error handling without revealing whether an email/username exists.
+- Add rate limiting/brute-force protection to the login endpoint.
+- Do not expose passwords, session tokens, API keys, database credentials, or other secrets in frontend code.
+- Store secrets in Replit Secrets/environment variables where appropriate.
+
+2. OWNER ADMIN DASHBOARD
+
+Create a clean, simple admin dashboard at:
+
+/admin
+
+The dashboard should allow the owner to manage website articles without technical knowledge.
+
+Include:
+- Dashboard overview
+- Total published posts
+- Draft posts
+- Recently created posts
+- Recently updated posts
+- "Create New Post" button
+- "Manage Posts" button
+- Logout button
+
+Keep the admin interface visually consistent with the existing website but clearly separate from the public-facing website.
+
+3. CREATE ARTICLE / POST
+
+Create:
+
+/admin/posts/new
+
+The owner should be able to create an article with:
+
+- Article title
+- URL slug
+- Featured image
+- Article excerpt/summary
+- Main article content
+- Category
+- Tags
+- Author
+- Publication date
+- SEO title
+- SEO description
+- Optional featured/hero image
+- Draft / Published status
+
+Provide a proper rich-text editor for the article body.
+
+The editor should support at minimum:
+- Headings
+- Paragraphs
+- Bold
+- Italic
+- Links
+- Ordered lists
+- Unordered lists
+- Blockquotes
+- Images
+- Tables if practical
+- YouTube/video embeds if practical
+- Undo/redo
+
+The owner should not need to write HTML manually.
+
+4. IMAGE UPLOADS
+
+Allow the owner to upload images directly while creating/editing posts.
+
+Requirements:
+- Validate file type.
+- Validate file size.
+- Reject dangerous file types.
+- Generate appropriate filenames.
+- Store uploaded images securely.
+- Prevent executable files from being uploaded as images.
+- Provide image preview.
+- Allow a featured image to be selected.
+- Optimize/compress images where practical.
+- Preserve good image quality.
+- Generate appropriate alt-text field for accessibility and SEO.
+
+Do not expose arbitrary filesystem paths to users.
+
+5. MANAGE POSTS
+
+Create:
+
+/admin/posts
+
+Display all articles in a useful table/list.
+
+Each post should show:
+- Title
+- Featured image thumbnail
+- Category
+- Author
+- Status
+- Publication date
+- Last updated
+- Actions
+
+Actions:
+- Edit
+- Preview
+- Publish
+- Unpublish
+- Delete
+
+Add:
+- Search
+- Filter by status
+- Filter by category
+- Pagination if there are many posts
+
+Deleting should require confirmation.
+
+6. EDIT POSTS
+
+Create:
+
+/admin/posts/[id]/edit
+
+The owner must be able to edit every field of an existing article.
+
+Saving changes must not accidentally create duplicate posts.
+
+Support:
+- Save Draft
+- Update
+- Publish
+- Unpublish
+
+7. PUBLIC BLOG/ARTICLE INTEGRATION
+
+Connect the CMS to the existing public website.
+
+Published posts must automatically appear wherever the current website displays blog/news/articles.
+
+Do NOT require manually editing website HTML whenever the owner publishes a new article.
+
+Each published article should have its own SEO-friendly URL, for example:
+
+/blog/article-title
+
+or use the existing website's current article URL structure if one already exists.
+
+IMPORTANT:
+Preserve the existing URL structure where possible so existing links and SEO are not unnecessarily broken.
+
+8. ARTICLE PAGE
+
+Create or connect the existing article template so dynamically published articles use the site's existing visual design.
+
+The article page should include:
+- Title
+- Featured image
+- Publication date
+- Author
+- Category
+- Article content
+- Related/recent articles
+- Social sharing where the existing site supports it
+- Proper responsive layout
+
+Do not create a completely different visual style.
+
+9. SEO
+
+Automatically generate appropriate metadata for every published article:
+
+- SEO title
+- Meta description
+- Canonical URL
+- Open Graph title
+- Open Graph description
+- Open Graph image
+- Twitter/X card metadata
+- Article structured data/schema where appropriate
+
+Generate sensible defaults from the article title/content when the owner does not manually provide SEO fields.
+
+10. SLUGS
+
+Automatically generate a clean URL slug from the article title.
+
+Example:
+
+"10 Important Masonry Maintenance Tips"
+
+becomes:
+
+/blog/10-important-masonry-maintenance-tips
+
+If the slug already exists:
+- Automatically prevent duplicate slugs.
+- Suggest or generate a unique slug.
+
+Allow the owner to manually edit the slug.
+
+11. DRAFTS AND PUBLISHING
+
+Support at least these statuses:
+
+- Draft
+- Published
+
+Draft articles must NEVER appear publicly.
+
+Published articles should immediately become available on the public website.
+
+If practical, also support:
+- Scheduled publishing
+- Unpublishing
+
+12. DATABASE
+
+Use the project's existing database if one already exists.
+
+If no database exists, implement an appropriate persistent database supported by the Replit environment.
+
+Create a proper posts/articles data model.
+
+At minimum store:
+
+- id
+- title
+- slug
+- excerpt
+- content
+- featured_image
+- category
+- tags
+- author
+- status
+- published_at
+- created_at
+- updated_at
+- seo_title
+- seo_description
+- canonical_url
+
+Do NOT use temporary in-memory storage for production content.
+
+13. ADMIN SECURITY
+
+Treat security as a top priority.
+
+Implement fail-safe behavior throughout the CMS.
+
+Requirements:
+- Authentication required for every admin route/API.
+- Authorization checks on every protected operation.
+- Server-side validation.
+- Input sanitization.
+- Protection against XSS.
+- Protection against SQL/NoSQL injection depending on database.
+- CSRF protection where applicable.
+- Secure cookies.
+- HTTP-only cookies for authentication tokens where applicable.
+- Appropriate SameSite settings.
+- Rate-limit login attempts.
+- Prevent unauthorized post creation/editing/deletion.
+- Validate uploaded files.
+- Never trust client-side validation alone.
+- Never expose database credentials or secrets.
+- Never expose admin API endpoints without authentication.
+- Return safe error messages.
+- Log important authentication/admin events without logging passwords or sensitive credentials.
+
+FAIL-SAFE PRINCIPLE:
+If authentication, authorization, validation, database operations, or permissions cannot be verified, fail closed and deny the operation rather than allowing it.
+
+14. OWNER ACCOUNT SETUP
+
+Create a secure way to configure the initial owner account.
+
+Do NOT hard-code the production password into the source code.
+
+Use environment variables/Replit Secrets for initial setup or provide a secure first-time admin setup process.
+
+The owner must be able to change their password after logging in.
+
+If practical, add:
+- Forgot password
+- Password reset
+- Password change
+
+Do not implement insecure password recovery.
+
+15. RESPONSIVE ADMIN PANEL
+
+The admin dashboard must work properly on:
+- Desktop
+- Laptop
+- Tablet
+- Mobile phone
+
+The owner should be able to write and publish an article from a phone.
+
+16. PREVIEW
+
+Add a "Preview" feature so the owner can see an article as it will appear on the public website before publishing.
+
+Draft previews must not become publicly accessible without authorization.
+
+17. BACKEND/API
+
+Separate frontend and backend responsibilities properly.
+
+Create secure API endpoints for:
+- Login
+- Logout
+- Authentication/session verification
+- Create post
+- Read posts
+- Update post
+- Delete post
+- Publish post
+- Unpublish post
+- Image upload
+
+Every protected endpoint must independently verify authentication and authorization.
+
+Never rely only on hiding admin buttons in the frontend.
+
+18. EXISTING WEBSITE COMPATIBILITY
+
+Before modifying anything:
+
+FIRST inspect the entire existing project.
+
+Identify:
+- Framework
+- Existing routing
+- Existing database
+- Existing backend
+- Existing blog/article components
+- Existing image handling
+- Existing CSS/design system
+- Existing SEO implementation
+- Existing deployment configuration
+
+Then integrate the CMS into the existing architecture rather than unnecessarily replacing working components.
+
+Do not rebuild the entire website.
+
+Do not remove existing pages.
+
+Do not remove existing content.
+
+Do not change the existing public design unnecessarily.
+
+19. WORDPRESS CLONE CONSIDERATION
+
+This website was originally cloned from a WordPress website.
+
+Do NOT simply create a fake WordPress login screen.
+
+The current website should have its own independent authentication and CMS system.
+
+The owner needs a real account that connects to the site's database and allows them to manage posts.
+
+20. TESTING
+
+After implementation, test the complete workflow:
+
+1. Visit /admin
+2. Unauthenticated user is redirected to login.
+3. Login with valid credentials.
+4. Access dashboard.
+5. Create a draft article.
+6. Upload a featured image.
+7. Add formatted content.
+8. Save draft.
+9. Verify draft does not appear publicly.
+10. Preview draft.
+11. Edit draft.
+12. Publish it.
+13. Verify it appears on the public website.
+14. Verify its article URL works.
+15. Verify SEO metadata.
+16. Edit the published article.
+17. Unpublish it.
+18. Verify it disappears from public listings.
+19. Delete it.
+20. Verify unauthorized users cannot access admin APIs/routes.
+21. Test invalid login attempts and rate limiting.
+22. Test malicious/invalid input.
+23. Test unauthorized post modification/deletion.
+24. Test image upload validation.
+25. Test the entire admin system on mobile.
+
+21. FAIL-SAFE FINAL CHECK
+
+Before declaring the work complete, inspect the implementation for:
+
+- Broken existing pages
+- Broken navigation
+- Broken links
+- Authentication bypasses
+- Exposed secrets
+- Unprotected API routes
+- Plain-text passwords
+- Unsafe file uploads
+- XSS vulnerabilities
+- Database injection vulnerabilities
+- Missing authorization checks
+- Duplicate slugs
+- Drafts accidentally appearing publicly
+- Broken images
+- Broken SEO
+- Mobile layout problems
+- Data loss when editing posts
+
+Fix all discovered issues.
+
+IMPORTANT FINAL REQUIREMENT:
+
+Do not just build the UI/mockup.
+
+The login, database, authentication, article creation, image upload, editing, publishing, unpublishing, deletion, and public article display must actually work end-to-end in the deployed Replit application.
+
+At the end, provide a concise summary of:
+- Files/components created or modified
+- Database structure
+- Admin URL
+- How the owner account is configured
+- How the owner logs in
+- How to create/publish an article
+- Any Replit Secrets/environment variables that must be configured
+
+Do not expose any passwords or secret values in the response.
+```
