@@ -125,6 +125,11 @@ export function InsightPage({ slug }: InsightPageProps) {
             seoTitle: post.seoTitle,
             seoDescription: post.seoDescription,
             canonicalUrl: post.canonicalUrl,
+            featuredImageAlt: post.featuredImageAlt,
+            relatedArticles: (post.relatedPosts ?? []).map((related: { title: string; slug: string }) => ({
+              title: related.title,
+              slug: related.slug,
+            })),
           });
         })
         .catch(() => undefined);
@@ -226,7 +231,7 @@ export function InsightPage({ slug }: InsightPageProps) {
         <div className="container mx-auto max-w-4xl px-4 md:px-8 mt-16">
           <img
             src={article.image.startsWith('/') || article.image.startsWith('http') ? article.image : `${import.meta.env.BASE_URL}images/${article.image}`}
-            alt=""
+            alt={article.featuredImageAlt || article.title}
             className="w-full aspect-[2.2/1] object-cover grayscale"
           />
         </div>

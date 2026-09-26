@@ -84,6 +84,7 @@ function publicPost(row: Record<string, any>) {
     excerpt: row.excerpt,
     content: row.content,
     featuredImage: row.featured_image_id ? `/api/uploads/${row.featured_image_id}` : null,
+    featuredImageAlt: row.featured_image_alt ?? '',
     category: row.category,
     tags: row.tags ?? [],
     author: row.author,
@@ -234,9 +235,11 @@ export async function registerApi(app: Express) {
   app.get('/api/public/posts', async (_req, res) => {
     try {
       const result = await query(
-        `SELECT * FROM posts
+        `SELECT posts.*, uploads.alt_text AS featured_image_alt
+         FROM posts
+         LEFT JOIN uploads ON uploads.id = posts.featured_image_id
          WHERE status = 'published' AND (publication_date IS NULL OR publication_date <= NOW())
-         ORDER BY COALESCE(publication_date, published_at, created_at) DESC`,
+         ORDER BY COALESCE(posts.publication_date, posts.published_at, posts.created_at) DESC`,
       );
       res.json(result.rows.map(publicPost));
     } catch {
@@ -247,8 +250,11 @@ export async function registerApi(app: Express) {
   app.get('/api/public/posts/:slug', async (req, res) => {
     try {
       const result = await query(
-        `SELECT * FROM posts
-         WHERE slug = $1 AND status = 'published' AND (publication_date IS NULL OR publication_date <= NOW())
+        `SELECT posts.*, uploads.alt_text AS featured_image_alt
+         FROM posts
+         LEFT JOIN uploads ON uploads.id = posts.featured_image_id
+         WHERE posts.slug = $1 AND posts.status = 'published'
+           AND (posts.publication_date IS NULL OR posts.publication_date <= NOW())
          LIMIT 1`,
         [req.params.slug],
       );
@@ -256,7 +262,18 @@ export async function registerApi(app: Express) {
         res.status(404).json({ error: 'Article not found.' });
         return;
       }
-      res.json(publicPost(result.rows[0]));
+      const related = await query(
+        `SELECT id, title, slug
+         FROM posts
+         WHERE status = 'published' AND id <> $1
+           AND (publication_date IS NULL OR publication_date <= NOW())
+         ORDER BY
+           CASE WHEN category = $2 THEN 0 ELSE 1 END,
+           COALESCE(publication_date, published_at, created_at) DESC
+         LIMIT 3`,
+        [result.rows[0].id, result.rows[0].category],
+      );
+      res.json({ ...publicPost(result.rows[0]), relatedPosts: related.rows });
     } catch {
       res.status(500).json({ error: 'Article is temporarily unavailable.' });
     }
@@ -301,6 +318,7 @@ export async function registerApi(app: Express) {
       ? String(req.query.status)
       : null;
     const search = cleanText(req.query.search, 120);
+    const category = cleanText(req.query.category, 100);
     const params: unknown[] = [];
     const where: string[] = [];
     if (status) {
@@ -310,6 +328,10 @@ export async function registerApi(app: Express) {
     if (search) {
       params.push(`%${search}%`);
       where.push(`(title ILIKE $${params.length} OR slug ILIKE $${params.length})`);
+    }
+    if (category) {
+      params.push(category);
+      where.push(`category = $${params.length}`);
     }
     const result = await query(
       `SELECT * FROM posts ${where.length ? `WHERE ${where.join(' AND ')}` : ''}

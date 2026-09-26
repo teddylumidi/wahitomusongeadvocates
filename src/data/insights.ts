@@ -25,6 +25,7 @@ export type InsightArticle = {
   seoTitle?: string;
   seoDescription?: string;
   canonicalUrl?: string;
+  featuredImageAlt?: string;
 };
 
 export const insightArticles: InsightArticle[] = [

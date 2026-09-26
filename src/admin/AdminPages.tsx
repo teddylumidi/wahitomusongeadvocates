@@ -193,15 +193,17 @@ export function AdminPostsPage() {
   const session = useAdminSession();
   const [posts, setPosts] = useState<CmsPost[]>([]);
   const [status, setStatus] = useState('');
+  const [category, setCategory] = useState('');
   const [search, setSearch] = useState('');
   const [error, setError] = useState('');
   async function load() {
     const params = new URLSearchParams();
     if (status) params.set('status', status);
+    if (category) params.set('category', category);
     if (search) params.set('search', search);
     try { setPosts(await api<CmsPost[]>(`/api/admin/posts?${params}`)); } catch (err) { setError(err instanceof Error ? err.message : 'Unable to load posts.'); }
   }
-  useEffect(() => { if (session.ready) void load(); }, [session.ready, status]);
+  useEffect(() => { if (session.ready) void load(); }, [session.ready, status, category]);
   if (!session.ready) return <AdminLoading />;
   async function action(id: number, name: 'publish' | 'unpublish' | 'delete') {
     if (name === 'delete' && !window.confirm('Delete this post permanently?')) return;
@@ -216,6 +218,7 @@ export function AdminPostsPage() {
       <div className="mb-6 flex flex-col gap-3 bg-white p-4 sm:flex-row">
         <label className="flex flex-1 items-center gap-2 border border-black/10 px-3"><Search size={16} className="text-primary/50" /><input value={search} onChange={(event) => setSearch(event.target.value)} onKeyDown={(event) => event.key === 'Enter' && void load()} placeholder="Search title or slug" className="w-full py-3 text-sm outline-none" /></label>
         <select value={status} onChange={(event) => setStatus(event.target.value)} className="border border-black/10 px-3 py-3 text-sm"><option value="">All statuses</option><option value="published">Published</option><option value="draft">Drafts</option></select>
+        <input value={category} onChange={(event) => setCategory(event.target.value)} onKeyDown={(event) => event.key === 'Enter' && void load()} placeholder="Filter category" className="border border-black/10 px-3 py-3 text-sm outline-none focus:border-secondary" />
       </div>
       {error && <p className="mb-4 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
       <div className="overflow-x-auto bg-white shadow-sm"><PostTable posts={posts} onAction={action} /></div>
@@ -234,6 +237,7 @@ function PostTable({ posts, onAction, compact = false }: { posts: CmsPost[]; onA
           <td className="px-4 py-4"><span className={`inline-flex px-2 py-1 text-[10px] font-semibold uppercase tracking-widest ${post.status === 'published' ? 'bg-green-50 text-green-700' : 'bg-amber-50 text-amber-700'}`}>{post.status}</span></td>
           <td className="px-4 py-4 text-primary/60">{new Date(post.updatedAt).toLocaleDateString()}</td>
           {onAction && <td className="px-4 py-4"><div className="flex flex-wrap gap-2 text-[10px] font-semibold uppercase tracking-widest">
+            <a href={`${baseUrl}admin/posts/${post.id}/edit?preview=1`} className="inline-flex items-center gap-1 text-primary hover:text-secondary"><Eye size={12} /> Preview</a>
             <a href={`${baseUrl}admin/posts/${post.id}/edit`} className="inline-flex items-center gap-1 text-primary hover:text-secondary"><Pencil size={12} /> Edit</a>
             {post.status === 'published' ? <button onClick={() => onAction(post.id, 'unpublish')} className="text-amber-700">Unpublish</button> : <button onClick={() => onAction(post.id, 'publish')} className="text-green-700">Publish</button>}
             <button onClick={() => onAction(post.id, 'delete')} className="inline-flex items-center gap-1 text-red-700"><Trash2 size={12} /> Delete</button>
@@ -252,7 +256,7 @@ export function AdminPostEditorPage({ id }: { id?: string }) {
   const [content, setContent] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageAlt, setImageAlt] = useState('');
-  const [preview, setPreview] = useState(false);
+  const [preview, setPreview] = useState(new URLSearchParams(window.location.search).get('preview') === '1');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const editorRef = useRef<HTMLDivElement>(null);

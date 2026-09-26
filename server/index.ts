@@ -16,7 +16,13 @@ await registerApi(app);
 if (process.env.NODE_ENV === 'production') {
   const publicDir = path.join(root, 'dist', 'public');
   app.use(express.static(publicDir, { index: false }));
-  app.get('*', (_req, res) => res.sendFile(path.join(publicDir, 'index.html')));
+  app.use((req, res, next) => {
+    if (req.method !== 'GET' || req.path.startsWith('/api/')) {
+      next();
+      return;
+    }
+    res.sendFile(path.join(publicDir, 'index.html'));
+  });
 } else {
   const vite = await createViteServer({
     root,

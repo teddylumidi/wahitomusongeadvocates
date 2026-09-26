@@ -50,6 +50,7 @@ export function InsightsArchivePage() {
             contentHtml: post.content,
             seoTitle: post.title,
             seoDescription: post.excerpt,
+            featuredImageAlt: post.title,
           }));
         setArticles([...staticArticles, ...dynamicArticles].sort(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),

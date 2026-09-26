@@ -18,6 +18,7 @@ import {
 function App() {
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
   const path = window.location.pathname.replace(basePath, '') || '/';
+  const isAdminPath = path === '/admin' || path.startsWith('/admin/');
   const adminEditMatch = path.match(/^\/admin\/posts\/([^/]+)\/edit\/?$/);
   const isAdminLogin = path === '/admin/login' || path === '/admin/login/';
   const isAdminDashboard = path === '/admin' || path === '/admin/';
@@ -64,7 +65,7 @@ function App() {
         ) : (
           <Home />
         )}
-        <WhatsAppButton />
+        {!isAdminPath && <WhatsAppButton />}
       </>
     </ErrorBoundary>
   );
