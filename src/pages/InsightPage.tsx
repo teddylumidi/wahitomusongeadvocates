@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { insightArticles, type InsightBlock } from "@/data/insights";
+import { insightArticles, type InsightArticle, type InsightBlock } from "@/data/insights";
 import { archiveInsights } from "@/data/archive-insights";
 
 type InsightPageProps = {
@@ -94,21 +94,75 @@ export function InsightPage({ slug }: InsightPageProps) {
   const importedArticle = archiveInsights.find(
     (item) => item.slug === slug || item.aliases?.includes(slug),
   );
-  const article = featuredArticle ?? importedArticle;
+  const [dynamicArticle, setDynamicArticle] = useState<InsightArticle | null>(null);
+  const article = featuredArticle ?? importedArticle ?? dynamicArticle;
   const homeUrl = `${import.meta.env.BASE_URL}#home`;
   const baseUrl = import.meta.env.BASE_URL;
   const insightsUrl = `${baseUrl}insights`;
   const isImportedArticle = !featuredArticle && Boolean(importedArticle);
 
   useEffect(() => {
+    if (!featuredArticle && !importedArticle) {
+      fetch(`/api/public/posts/${encodeURIComponent(slug)}`)
+        .then((response) => (response.ok ? response.json() : null))
+        .then((post) => {
+          if (!post) return;
+          setDynamicArticle({
+            slug: post.slug,
+            title: post.title,
+            date: new Date(post.publicationDate ?? post.createdAt).toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            }),
+            image: post.featuredImage ?? 'nairobi-skyline.png',
+            excerpt: post.excerpt,
+            author: post.author,
+            categories: [post.category],
+            tags: post.tags,
+            blocks: [],
+            contentHtml: post.content,
+            seoTitle: post.seoTitle,
+            seoDescription: post.seoDescription,
+            canonicalUrl: post.canonicalUrl,
+          });
+        })
+        .catch(() => undefined);
+    }
     if (!article) return;
-    document.title = `${article.title} | Wahito Musonge & Company Advocates LLP`;
-    const description = document.querySelector<HTMLMetaElement>(
-      'meta[name="description"]',
-    );
-    description?.setAttribute("content", article.excerpt);
+    const seoTitle = article.seoTitle || `${article.title} | Wahito Musonge & Company Advocates LLP`;
+    const seoDescription = article.seoDescription || article.excerpt;
+    const imageUrl = article.image.startsWith('/') || article.image.startsWith('http')
+      ? new URL(article.image, window.location.origin).toString()
+      : new URL(`${baseUrl}images/${article.image}`, window.location.origin).toString();
+    document.title = seoTitle;
+    setMetaTag('description', seoDescription);
+    setMetaTag('og:title', seoTitle, 'property');
+    setMetaTag('og:description', seoDescription, 'property');
+    setMetaTag('og:type', 'article', 'property');
+    setMetaTag('og:image', imageUrl, 'property');
+    setMetaTag('twitter:card', 'summary_large_image');
+    setMetaTag('twitter:title', seoTitle);
+    setMetaTag('twitter:description', seoDescription);
+    setCanonical(article.canonicalUrl || window.location.href);
+    const existingSchema = document.getElementById('article-schema');
+    existingSchema?.remove();
+    const schema = document.createElement('script');
+    schema.id = 'article-schema';
+    schema.type = 'application/ld+json';
+    schema.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: article.title,
+      description: seoDescription,
+      author: { '@type': 'Person', name: article.author },
+      datePublished: article.date,
+      image: imageUrl,
+      mainEntityOfPage: window.location.href,
+    });
+    document.head.appendChild(schema);
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [article]);
+  }, [article, featuredArticle, importedArticle, slug]);
 
   if (!article) {
     return (
@@ -171,14 +225,16 @@ export function InsightPage({ slug }: InsightPageProps) {
 
         <div className="container mx-auto max-w-4xl px-4 md:px-8 mt-16">
           <img
-            src={`${import.meta.env.BASE_URL}images/${article.image}`}
+            src={article.image.startsWith('/') || article.image.startsWith('http') ? article.image : `${import.meta.env.BASE_URL}images/${article.image}`}
             alt=""
             className="w-full aspect-[2.2/1] object-cover grayscale"
           />
         </div>
 
         <article className="container mx-auto max-w-3xl px-4 md:px-8 py-16 md:py-24">
-          {renderInsightBlocks(article.blocks)}
+          {article.contentHtml ? (
+            <div className="prose prose-neutral max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-secondary" dangerouslySetInnerHTML={{ __html: article.contentHtml }} />
+          ) : renderInsightBlocks(article.blocks)}
 
           {(article.categories.length > 0 || article.tags.length > 0) && (
             <div className="mt-16 border-t border-gray-200 pt-10">
@@ -266,4 +322,24 @@ export function InsightPage({ slug }: InsightPageProps) {
       <Footer />
     </div>
   );
+}
+
+function setMetaTag(name: string, content: string, attribute: 'name' | 'property' = 'name') {
+  let tag = document.querySelector<HTMLMetaElement>(`meta[${attribute}="${name}"]`);
+  if (!tag) {
+    tag = document.createElement('meta');
+    tag.setAttribute(attribute, name);
+    document.head.appendChild(tag);
+  }
+  tag.content = content;
+}
+
+function setCanonical(url: string) {
+  let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'canonical';
+    document.head.appendChild(link);
+  }
+  link.href = url;
 }

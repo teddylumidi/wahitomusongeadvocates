@@ -21,6 +21,10 @@ export type InsightArticle = {
   tags: string[];
   relatedArticles?: InsightRelatedArticle[];
   blocks: InsightBlock[];
+  contentHtml?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  canonicalUrl?: string;
 };
 
 export const insightArticles: InsightArticle[] = [

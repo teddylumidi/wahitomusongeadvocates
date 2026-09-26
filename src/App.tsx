@@ -7,10 +7,23 @@ import { ServicesPage } from '@/pages/ServicesPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { SitePage } from '@/pages/SitePage';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import {
+  AdminDashboardPage,
+  AdminAccountPage,
+  AdminLoginPage,
+  AdminPostEditorPage,
+  AdminPostsPage,
+} from '@/admin/AdminPages';
 
 function App() {
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
   const path = window.location.pathname.replace(basePath, '') || '/';
+  const adminEditMatch = path.match(/^\/admin\/posts\/([^/]+)\/edit\/?$/);
+  const isAdminLogin = path === '/admin/login' || path === '/admin/login/';
+  const isAdminDashboard = path === '/admin' || path === '/admin/';
+  const isAdminPosts = path === '/admin/posts' || path === '/admin/posts/';
+  const isAdminNewPost = path === '/admin/posts/new' || path === '/admin/posts/new/';
+  const isAdminAccount = path === '/admin/account' || path === '/admin/account/';
   const insightMatch = path.match(/^\/insights\/([^/]+)\/?$/);
   const serviceMatch = path.match(/^\/services\/([^/]+)\/?$/);
   const sitePageMatch = path.match(
@@ -24,7 +37,19 @@ function App() {
   return (
     <ErrorBoundary resetKey="root">
       <>
-        {serviceMatch ? (
+        {adminEditMatch ? (
+          <AdminPostEditorPage id={adminEditMatch[1]} />
+        ) : isAdminLogin ? (
+          <AdminLoginPage />
+        ) : isAdminDashboard ? (
+          <AdminDashboardPage />
+        ) : isAdminPosts ? (
+          <AdminPostsPage />
+        ) : isAdminNewPost ? (
+          <AdminPostEditorPage />
+        ) : isAdminAccount ? (
+          <AdminAccountPage />
+        ) : serviceMatch ? (
           <ServicePage slug={serviceMatch[1]} />
         ) : insightMatch ? (
           <InsightPage slug={insightMatch[1]} />

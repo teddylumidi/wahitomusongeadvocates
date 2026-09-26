@@ -1,20 +1,61 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { insightArticles } from '@/data/insights';
 import { archiveInsights } from '@/data/archive-insights';
 
-const articles = [...insightArticles, ...archiveInsights].sort(
+const staticArticles = [...insightArticles, ...archiveInsights].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
 );
 
 export function InsightsArchivePage() {
   const baseUrl = import.meta.env.BASE_URL;
+  const [articles, setArticles] = useState(staticArticles);
 
   useEffect(() => {
     document.title = 'Insights | Wahito Musonge & Company Advocates LLP';
     window.scrollTo({ top: 0, behavior: 'instant' });
+    fetch('/api/public/posts')
+      .then((response) => (response.ok ? response.json() : []))
+      .then((posts: Array<{
+        slug: string;
+        title: string;
+        excerpt: string;
+        featuredImage: string | null;
+        category: string;
+        tags: string[];
+        author: string;
+        publicationDate: string | null;
+        createdAt: string;
+        content: string;
+      }>) => {
+        const staticSlugs = new Set(staticArticles.map((article) => article.slug));
+        const dynamicArticles = posts
+          .filter((post) => !staticSlugs.has(post.slug))
+          .map((post) => ({
+            slug: post.slug,
+            title: post.title,
+            date: new Date(post.publicationDate ?? post.createdAt).toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            }),
+            image: post.featuredImage ?? 'nairobi-skyline.png',
+            excerpt: post.excerpt,
+            author: post.author,
+            categories: [post.category],
+            tags: post.tags,
+            blocks: [],
+            contentHtml: post.content,
+            seoTitle: post.title,
+            seoDescription: post.excerpt,
+          }));
+        setArticles([...staticArticles, ...dynamicArticles].sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+        ));
+      })
+      .catch(() => undefined);
   }, []);
 
   return (
@@ -70,7 +111,7 @@ export function InsightsArchivePage() {
               >
                 <div className="relative aspect-[3/2] overflow-hidden bg-gray-100 mb-6">
                   <img
-                    src={`${baseUrl}images/${article.image}`}
+                    src={article.image.startsWith('/') || article.image.startsWith('http') ? article.image : `${baseUrl}images/${article.image}`}
                     alt={article.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={(e) => {

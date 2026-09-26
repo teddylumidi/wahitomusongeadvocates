@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --config vite.config.ts --host 0.0.0.0",
+    "dev": "tsx server/index.ts",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "db:push": "tsx scripts/db-push.ts",
     "validate:content": "tsx scripts/validate-legal-nuggets.ts",
     "validate:routes": "npm run build && tsx scripts/smoke-test-legal-nugget-routes.ts"
   },
@@ -76,5 +77,22 @@
     "vite": "^7.3.2",
     "wouter": "^3.3.5",
     "zod": "^3.25.76"
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.2.0",
+    "@types/pg": "^8.23.1",
+    "@types/sanitize-html": "^2.16.1",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "file-type": "^21.3.4",
+    "helmet": "^8.3.0",
+    "multer": "^2.4.0",
+    "pg": "^8.23.0",
+    "sanitize-html": "^2.17.5",
+    "sharp": "^0.35.4"
   }
 }
