@@ -40,7 +40,7 @@ export async function ensureOwnerAccount() {
   await query(
     `INSERT INTO admins (email, password_hash)
      VALUES ($1, $2)
-     ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash, updated_at = NOW()`,
+     ON CONFLICT (email) DO NOTHING`,
     [email, passwordHash],
   );
 }

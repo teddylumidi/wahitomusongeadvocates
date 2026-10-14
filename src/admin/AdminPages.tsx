@@ -323,6 +323,7 @@ export function AdminPostEditorPage({ id }: { id?: string }) {
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest">Featured image</p>
             {post.featuredImage && <img src={post.featuredImage} alt="" className="mb-3 aspect-video w-full object-cover" />}
             <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" onChange={(event) => setImageFile(event.target.files?.[0] ?? null)} className="w-full text-xs" />
+            <p className="mt-2 text-xs text-primary/50">Netlify image uploads are limited to 4 MB.</p>
             <input value={imageAlt} onChange={(event) => setImageAlt(event.target.value)} placeholder="Image alt text" className="mt-3 w-full border border-black/15 px-3 py-2 text-sm outline-none focus:border-secondary" />
           </div>
           <div className="bg-white p-4">

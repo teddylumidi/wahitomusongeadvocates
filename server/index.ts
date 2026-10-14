@@ -1,17 +1,13 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import express from 'express';
-import cookieParser from 'cookie-parser';
 import { createServer as createViteServer } from 'vite';
-import { registerApi } from './routes';
+import { createApp } from './create-app';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const port = Number(process.env.PORT ?? 5000);
-const app = express();
-
-app.use(cookieParser());
-await registerApi(app);
+const app = await createApp();
 
 if (process.env.NODE_ENV === 'production') {
   const publicDir = path.join(root, 'dist', 'public');

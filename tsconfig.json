@@ -1,6 +1,7 @@
 {
   "include": [
     "src/**/*",
+    "netlify/functions/**/*.ts",
     "vite.config.ts"
   ],
   "exclude": [
