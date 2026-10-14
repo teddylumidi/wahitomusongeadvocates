@@ -10,8 +10,8 @@
   ],
   "rewrites": [
     {
-      "source": "^/api/(?!handler$)(.*)$",
-      "destination": "/api/handler?__api_path=$1"
+      "source": "/api/:path*",
+      "destination": "/api/handler?__api_path=:path*"
     },
     { "source": "/admin", "destination": "/index.html" },
     { "source": "/admin/:path*", "destination": "/index.html" },
