@@ -1,0 +1,30 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/admin/login",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    { "source": "/admin", "destination": "/index.html" },
+    { "source": "/admin/:path*", "destination": "/index.html" },
+    { "source": "/insights", "destination": "/index.html" },
+    { "source": "/insights/:path*", "destination": "/index.html" },
+    { "source": "/services", "destination": "/index.html" },
+    { "source": "/services/:path*", "destination": "/index.html" },
+    { "source": "/blog", "destination": "/index.html" },
+    { "source": "/practice-areas", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/about-me", "destination": "/index.html" },
+    { "source": "/about-us", "destination": "/index.html" },
+    { "source": "/mary-njogu-wahito", "destination": "/index.html" },
+    { "source": "/managing-partner", "destination": "/index.html" },
+    { "source": "/legalnuggets", "destination": "/index.html" },
+    { "source": "/privacy-policy", "destination": "/index.html" },
+    { "source": "/terms-and-conditions", "destination": "/index.html" },
+    { "source": "/website-disclaimer", "destination": "/index.html" }
+  ]
+}
