@@ -5,7 +5,6 @@ import helmet from 'helmet';
 import multer from 'multer';
 import sanitizeHtml from 'sanitize-html';
 import { fileTypeFromBuffer } from 'file-type';
-import sharp from 'sharp';
 import bcrypt from 'bcryptjs';
 import { query } from './db';
 import {
@@ -365,6 +364,7 @@ export async function registerApi(app: Express) {
         res.status(400).json({ error: 'Only JPG, PNG, WEBP, or GIF images are allowed.' });
         return;
       }
+      const { default: sharp } = await import('sharp');
       const output = detected.ext === 'gif'
         ? req.file.buffer
         : await sharp(req.file.buffer).rotate().webp({ quality: 82 }).toBuffer();
