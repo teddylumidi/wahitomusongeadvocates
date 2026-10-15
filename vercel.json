@@ -22,6 +22,7 @@
     { "source": "/legalnuggets", "destination": "/index.html" },
     { "source": "/privacy-policy", "destination": "/index.html" },
     { "source": "/terms-and-conditions", "destination": "/index.html" },
-    { "source": "/website-disclaimer", "destination": "/index.html" }
+    { "source": "/website-disclaimer", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
