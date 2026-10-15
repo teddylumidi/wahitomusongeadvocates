@@ -23,7 +23,7 @@ import {
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: process.env.NETLIFY === 'true' ? 4 * 1024 * 1024 : 8 * 1024 * 1024,
+    fileSize: process.env.VERCEL === '1' ? 4 * 1024 * 1024 : 8 * 1024 * 1024,
     files: 1,
   },
 });

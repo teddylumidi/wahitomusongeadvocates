@@ -26,12 +26,18 @@ and delivers enquiries to the verified recipient configured in Formspree without
 opening the visitor's email client. No API keys or private credentials are
 included in the browser bundle.
 
-## Admin blog CMS on Netlify
+## Admin blog CMS on Vercel
 
 The CMS is available at `/admin/login`. The owner can create, edit, save drafts,
-and publish posts from the admin dashboard. Netlify serves the site and routes
-`/api/*` requests to a Netlify Function; blog content and account sessions are
-stored in PostgreSQL. There is no default account or password.
+and publish posts from the admin dashboard. Vercel serves the site and routes
+`/api/*` requests to the serverless handler in `api/handler.ts`; blog content
+and account sessions are stored in PostgreSQL. There is no default account or
+password.
+
+The browser calls the same site's `/api/*` route directly; it does not need a
+`VITE_API_URL` or a localhost URL. Keep the Vercel project connected to this
+repository so its API function and the `vercel.json` route configuration are
+deployed alongside the frontend.
 
 ### Initial setup
 
@@ -47,17 +53,19 @@ stored in PostgreSQL. There is no default account or password.
    ```
 
    Keep the connection string private; do not commit it or send it in chat.
-3. Connect this repository to Netlify. The checked-in `netlify.toml` configures
-   the site build and Functions directory. Add these site environment variables
-   in Netlify's UI, for the production deploy context:
+3. Import this repository as a project in Vercel. The checked-in `vercel.json`
+   configures the production build, static output, API routing, and client-side
+   page routing. In the Vercel project settings, add these environment
+   variables for Production (and Preview if you want CMS access on previews):
    - `DATABASE_URL`: the Neon pooled connection string
    - `ADMIN_EMAIL`: `wahitomusongeblogs@gmail.com`
    - `ADMIN_PASSWORD`: a unique initial password of at least 12 characters
-4. Deploy the site. The first API request initializes the owner account if it
+4. Deploy or redeploy the project so the function receives those environment
+   variables. The first API request initializes the owner account if it
    does not already exist. Sign in at `/admin/login`; change the initial
    password at `/admin/account`.
 
 The initial account is created only if it is missing, so later server starts
-won't reset a password changed in the CMS. Keep all three values in Netlify
+won't reset a password changed in the CMS. Keep all three values in Vercel
 environment variables, never in the browser bundle or source control. The
 existing standalone Node.js server remains available for local development.

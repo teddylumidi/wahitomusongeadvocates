@@ -32,9 +32,22 @@ async function api<T>(path: string, options: RequestInit = {}) {
   if (options.body && !(options.body instanceof FormData)) headers.set('Content-Type', 'application/json');
   const token = csrfToken();
   if (token) headers.set('x-csrf-token', token);
-  const response = await fetch(path, { ...options, headers, credentials: 'include' });
+  let response: Response;
+  try {
+    response = await fetch(path, { ...options, headers, credentials: 'include' });
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error('The CMS API could not be reached. Check that the Vercel deployment includes its API function and /api/* route. No localhost API URL is required.');
+    }
+    throw error;
+  }
   const body = response.status === 204 ? null : await response.json().catch(() => null);
-  if (!response.ok) throw new Error(body?.error || 'The request could not be completed.');
+  if (!response.ok) {
+    if (response.status === 404 && path.startsWith('/api/')) {
+      throw new Error('The CMS API route was not found. Check the Vercel deployment includes the API function and /api/* route; a static frontend alone cannot handle sign-in.');
+    }
+    throw new Error(body?.error || 'The request could not be completed.');
+  }
   return body as T;
 }
 
@@ -143,6 +156,9 @@ export function AdminLoginPage() {
         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary">Owner access</p>
         <h1 className="font-serif text-4xl text-primary">Sign in to the CMS</h1>
         <p className="mt-5 text-sm leading-7 text-primary/70">Manage articles and legal insights securely from one place.</p>
+        <p className="mt-5 border-l-2 border-secondary bg-[#f7f7f5] px-4 py-3 text-xs leading-6 text-primary/70">
+          Sign-in uses this site’s <code className="font-semibold">/api</code> route—not a localhost address. The CMS backend runs as a Vercel Function, deployed alongside the website.
+        </p>
         <form onSubmit={submit} className="mt-8 grid gap-5">
           <label className="grid gap-2 text-xs font-semibold uppercase tracking-widest">
             Email
@@ -323,7 +339,7 @@ export function AdminPostEditorPage({ id }: { id?: string }) {
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest">Featured image</p>
             {post.featuredImage && <img src={post.featuredImage} alt="" className="mb-3 aspect-video w-full object-cover" />}
             <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" onChange={(event) => setImageFile(event.target.files?.[0] ?? null)} className="w-full text-xs" />
-            <p className="mt-2 text-xs text-primary/50">Netlify image uploads are limited to 4 MB.</p>
+            <p className="mt-2 text-xs text-primary/50">Vercel image uploads are limited to 4 MB.</p>
             <input value={imageAlt} onChange={(event) => setImageAlt(event.target.value)} placeholder="Image alt text" className="mt-3 w-full border border-black/15 px-3 py-2 text-sm outline-none focus:border-secondary" />
           </div>
           <div className="bg-white p-4">
