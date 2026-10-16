@@ -1,7 +1,6 @@
 import type { Request, Response } from 'express';
-import { createApp } from '../server/create-app';
 
-let appPromise: ReturnType<typeof createApp> | undefined;
+let appPromise: Promise<import('express').Express> | undefined;
 
 export default async function handler(request: Request, response: Response) {
   try {
@@ -13,11 +12,14 @@ export default async function handler(request: Request, response: Response) {
       request.url = `/api/${path}${url.search ? url.search : ''}`;
     }
 
-    appPromise ??= createApp();
+    appPromise ??= import('../server/create-app').then(({ createApp }) => createApp());
     const app = await appPromise;
     app(request, response);
   } catch (error) {
+    appPromise = undefined;
     console.error('Vercel CMS API startup failed.', error);
-    response.status(503).json({ error: 'CMS API is temporarily unavailable.' });
+    if (!response.headersSent) {
+      response.status(503).json({ error: 'CMS API is temporarily unavailable.' });
+    }
   }
 }
