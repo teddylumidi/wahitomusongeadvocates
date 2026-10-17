@@ -6,7 +6,7 @@ import multer from 'multer';
 import sanitizeHtml from 'sanitize-html';
 import { fileTypeFromBuffer } from 'file-type';
 import bcrypt from 'bcryptjs';
-import { query } from './db';
+import { query } from './db.js';
 import {
   authenticateOwner,
   createSession,
@@ -17,7 +17,7 @@ import {
   SESSION_COOKIE,
   type AuthenticatedRequest,
   sessionCookieOptions,
-} from './security';
+} from './security.js';
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -173,7 +173,7 @@ export async function registerApi(app: Express) {
       return;
     }
     try {
-      const { getSession } = await import('./security');
+      const { getSession } = await import('./security.js');
       const session = await getSession(sessionId);
       res.json(session
         ? { authenticated: true, email: session.email, csrfToken: session.csrf_token }

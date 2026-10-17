@@ -12,7 +12,7 @@ export default async function handler(request: Request, response: Response) {
       request.url = `/api/${path}${url.search ? url.search : ''}`;
     }
 
-    appPromise ??= import('../server/create-app').then(({ createApp }) => createApp());
+    appPromise ??= import('../server/create-app.js').then(({ createApp }) => createApp());
     const app = await appPromise;
     app(request, response);
   } catch (error) {

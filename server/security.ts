@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import type { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { query } from './db';
+import { query } from './db.js';
 
 const SESSION_COOKIE = 'wm_session';
 const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
